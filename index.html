@@ -70,30 +70,70 @@
         .pricing-table tr:nth-child(even) { background:rgba(246,92,122,.02); }
         .col-concept{width:22%;} .col-desc{width:48%;} .col-qty{width:10%;text-align:center;} .col-unit{width:10%;text-align:right;} .col-total{width:10%;text-align:right;font-weight:600;}
         .align-center{text-align:center;} .align-right{text-align:right;}
-        .tbl-thumb { width:56px; height:56px; object-fit:cover; border-radius:10px; border:1px solid var(--beige); display:inline-block; margin:0 4px 8px 0; }
-        .tbl-thumb-pend { width:56px; height:56px; border-radius:10px; border:1px dashed var(--primary-light); display:inline-flex; align-items:center; justify-content:center; margin:0 4px 8px 0; color:var(--primary-light); font-size:.9rem;
+        .tbl-thumb { width:64px; height:64px; object-fit:cover; border-radius:10px; border:1px solid var(--beige); display:inline-block; margin:0 4px 8px 0; }
+        .tbl-thumb-pend { width:64px; height:64px; border-radius:10px; border:1px dashed var(--primary-light); display:inline-flex; align-items:center; justify-content:center; margin:0 4px 8px 0; color:var(--primary-light); font-size:1rem;
             background:repeating-linear-gradient(45deg,#F5EFEB,#F5EFEB 6px,#EFE7E1 6px,#EFE7E1 12px); }
         .calc-hint { color:var(--gray-text); font-size:.88rem; margin-bottom:18px; }
 
-        .includes-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; margin-bottom:45px; }
-        .include-item { background:var(--white); border:1px solid var(--beige); border-radius:20px; overflow:hidden; }
-        .include-img-container { width:100%; height:160px; overflow:hidden; }
-        .include-img { width:100%; height:100%; object-fit:cover; }
-        .include-content { padding:18px; }
-        .include-content h4 { font-size:1rem; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+        .includes-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin-bottom:50px; }
+        .include-item { background:var(--white); border:1px solid var(--beige); border-radius:20px; overflow:hidden; height:100%; display:flex; flex-direction:column; transition:all .4s cubic-bezier(.165,.84,.44,1); }
+        .include-item:hover { transform:translateY(-6px); box-shadow:0 15px 30px rgba(0,0,0,.1); border-color:var(--primary-pink); }
+        .include-img-container { width:100%; height:210px; overflow:hidden; position:relative; }
+        .include-img { width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.165,.84,.44,1); }
+        .include-item:hover .include-img { transform:scale(1.08); }
+        .include-content { padding:22px; flex-grow:1; }
+        .include-content h4 { font-size:1.05rem; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
         .include-content h4 i { color:var(--primary-pink); font-size:.9rem; }
         .include-content p { font-size:.85rem; color:var(--gray-text); }
+
+        .croquis-section { margin-bottom:50px; }
+        .croquis-frame { position:relative; border-radius:20px; overflow:hidden; border:1px solid var(--beige); box-shadow:0 15px 30px rgba(0,0,0,.08); }
+        .croquis-preview-img { width:100%; height:auto; max-height:520px; object-fit:contain; display:block; background:#171923; }
+        .btn-croquis { position:absolute; left:50%; bottom:22px; transform:translateX(-50%); background:var(--primary-pink); color:var(--white); padding:14px 30px; border-radius:50px; text-decoration:none; display:inline-flex; align-items:center; gap:10px; font-weight:600; font-size:.9rem; box-shadow:0 10px 25px rgba(246,92,122,.5); transition:all .3s ease; white-space:nowrap; }
+        .btn-croquis:hover { background:#e04b69; transform:translateX(-50%) scale(1.05); }
+        @media (max-width:600px){ .btn-croquis { font-size:.78rem; padding:11px 20px; bottom:14px; } }
 
         .pricing-section { background:linear-gradient(135deg,var(--primary-dark) 0%,#2d1422 100%); border-radius:24px; padding:45px; margin-top:30px; color:var(--white); text-align:center; }
         .pricing-section h3 { font-size:1.3rem; color:var(--gold-accent); margin-bottom:5px; text-transform:uppercase; letter-spacing:2px; }
         .price-hero { font-size:3.4rem; font-weight:700; margin:15px 0 10px; }
         .price-hero sup { font-size:1.5rem; color:var(--gold-accent); }
         .price-label { font-size:1rem; color:rgba(255,255,255,.7); margin-bottom:10px; }
+        .price-total-chico { margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,.15); font-size:.86rem; color:rgba(255,255,255,.72); }
+        .price-total-chico strong { color:var(--gold-accent); font-weight:600; }
         .price-note { margin-top:20px; font-size:.75rem; color:rgba(255,255,255,.4); }
         .price-breakdown { text-align:left; margin-top:20px; border-top:1px solid rgba(255,255,255,.12); padding-top:18px; font-size:.85rem; color:rgba(255,255,255,.85); }
         .price-breakdown-row { display:flex; justify-content:space-between; padding:4px 0; }
 
-        .calc-section { margin-top:45px; padding-top:35px; border-top:1px solid var(--beige); }
+        /* ══ Container y Cotizador — necesarios para el pinning de la placa de totales ══ */
+        .quote-card { position:relative; }
+        .calc-section { margin-top:45px; padding-top:35px; border-top:1px solid var(--beige); position:relative; }
+
+        /* ══ Placa de total del cotizador dinámico — se fija en pantalla mientras se eligen extras ══ */
+        .calc-total-box { background:linear-gradient(135deg,var(--primary-dark) 0%,#2d1422 100%);
+            color:var(--white); border-radius:18px; padding:18px 22px; margin-bottom:22px; box-shadow:0 14px 30px rgba(31,31,31,.35);
+            border:1.5px solid var(--gold-accent); width:100%; box-sizing:border-box; transition:box-shadow .2s ease; }
+        .calc-total-box.is-pinned {
+            position:fixed !important; top:10px !important; left:50% !important; transform:translateX(-50%) !important;
+            z-index:99999 !important; box-shadow:0 16px 40px rgba(0,0,0,0.65) !important;
+        }
+        .ctb-row { display:flex; justify-content:space-between; align-items:baseline; gap:12px; font-size:.85rem; color:rgba(255,255,255,.75); padding:2px 0; }
+        .ctb-extras-list { list-style:none; margin:8px 0 0; padding:0; max-height:150px; overflow-y:auto; }
+        .ctb-extras-list li { display:flex; justify-content:space-between; gap:10px; font-size:.78rem; color:rgba(255,255,255,.85); padding:3px 0; }
+        .ctb-vacio { font-size:.78rem; color:rgba(255,255,255,.55); font-style:italic; }
+        .ctb-pp { display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.18); }
+        .ctb-pp span:first-child { font-size:.72rem; text-transform:uppercase; letter-spacing:1.4px; color:var(--gold-accent); font-weight:700; }
+        .ctb-pp strong { font-family:var(--font-serif); font-size:1.75rem; line-height:1; }
+        .ctb-total-chico { display:flex; justify-content:space-between; gap:12px; margin-top:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,.14); font-size:.78rem; color:rgba(255,255,255,.7); }
+        .ctb-total-chico strong { color:var(--gold-accent); font-weight:600; }
+        @media (max-width:768px){
+            .calc-total-box.is-pinned {
+                top:8px !important; left:50% !important; transform:translateX(-50%) !important;
+                padding:12px 14px !important; border-radius:16px !important;
+                box-shadow:0 12px 30px rgba(0,0,0,0.65) !important; box-sizing:border-box !important;
+            }
+            .ctb-pp strong { font-size:1.4rem; }
+            .ctb-extras-list { max-height:90px; }
+        }
         .calc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:12px; }
         .calc-item { display:flex; align-items:center; gap:10px; background:var(--background-light); border:1px solid var(--beige); border-radius:12px; padding:12px 14px; cursor:pointer; transition:all .2s; }
         .calc-item:hover { border-color:var(--gold-accent); }
@@ -201,7 +241,8 @@
         /* CSS print obligatorio — DIRECTIVES.md sección 9 */
         @media print {
             #preloader, .floating-actions-container, .pdf-section,
-            .kit-buttons, .cta-container .btn-wa, audio, .audio-toggle { display:none!important; }
+            .kit-buttons, .cta-container .btn-wa, audio, .audio-toggle,
+            .calc-total-box, .calc-box-placeholder, .calc-section, .croquis-section { display:none!important; }
             .include-item, .complemento-card, .venue-info-card,
             .notes-section, .pricing-section, .kit-section {
                 page-break-inside: avoid!important; break-inside: avoid!important;
@@ -276,6 +317,16 @@
                 <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_ceremonia.png" alt="Área consagrada y jardín de Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-seedling"></i> Jardín y Área Consagrada</h4><p>Vegetación natural, pérgola y pasillo listo para tu ceremonia o entrada de honor.</p></div></div>
                 <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_plano.png" alt="Plano del Salón Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-map"></i> Distribución del Salón</h4><p>Croquis ilustrativo del salón techado; el acomodo final para tus 200 invitados se ajusta en tu diseño de montaje.</p></div></div>
                 <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="logo_jardin_la_flor.png" alt="Identidad Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-heart"></i> Identidad Floral del Recinto</h4><p>Jardín La Flor, un espacio íntimo de estilo cuernavaquense pensado para festejos florales y elegantes.</p></div></div>
+            </div>
+
+            <!-- ══ Croquis interactivo real del Salón Jardín La Flor: INCLUIDO EN EL SERVICIO ══ -->
+            <div class="croquis-section reveal">
+                <h3 class="section-title"><i class="fas fa-map"></i> Croquis Interactivo 2D y 3D <span style="font-size:0.8rem; background:var(--gold-accent); color:var(--white); padding:3px 10px; border-radius:12px; vertical-align:middle; font-weight:600; text-transform:uppercase; margin-left:8px;">Incluido</span></h3>
+                <p class="calc-hint">Al firmar contrato diseñamos el montaje según tu paleta de colores y te entregamos el croquis de distribución, el minuto a minuto y un chat directo con coordinación. Mientras tanto, puedes abrir y mover en vivo la distribución real del Salón Jardín La Flor en 2D y 3D:</p>
+                <div class="croquis-frame">
+                    <img src="jardin_la_flor_plano.png" alt="Plano del Salón Jardín La Flor" class="croquis-preview-img">
+                    <a class="btn-croquis" href="https://5410m0n0c001.github.io/jardin-la-flor-plano/" target="_blank"><i class="fas fa-cube"></i> Abrir Croquis Interactivo 2D/3D</a>
+                </div>
             </div>
 
             <!-- ══ DESGLOSE COMPLETO DEL PAQUETE ESENCIA FLORAL ══ -->
@@ -560,9 +611,10 @@
 
             <!-- ══ INVERSIÓN TOTAL BASE ══ -->
             <div class="pricing-section reveal" id="inversionBase">
-                <h3>Inversión Total Estimada</h3>
-                <div class="price-hero" id="totalBaseDisplay">$179,800.00<sup>MXN</sup></div>
-                <div class="price-label">200 invitados · Paquete Esencia Floral</div>
+                <h3>Su Inversión</h3>
+                <div class="price-hero" id="totalBaseDisplay">$899.00<sup>MXN</sup></div>
+                <div class="price-label">por persona · 200 invitados · 8 horas de servicio continuo</div>
+                <div class="price-total-chico">Inversión total del evento: <strong id="totalEventoChico">$179,800.00 MXN</strong></div>
                 <div class="price-breakdown" id="desgloseExtras" style="display:none;">
                     <div class="price-breakdown-row"><span>Paquete Esencia Floral (200 px × $899.00)</span><span id="totalBaseTexto">$179,800.00</span></div>
                     <ul id="listaExtras" style="list-style:none; margin:6px 0; padding:0;"></ul>
@@ -606,7 +658,14 @@
             <!-- ══ COTIZADOR DINÁMICO DE EXTRAS ══ -->
             <div class="calc-section">
                 <h3 class="section-title reveal reveal-left"><i class="fas fa-calculator"></i> Cotizador Dinámico de Extras</h3>
-                <p class="calc-hint">Selecciona los servicios o artículos adicionales que quieras agregar a tu cotización — el total se suma en tiempo real al monto base de arriba.</p>
+                <p class="calc-hint">Selecciona los servicios o artículos adicionales que quieras agregar a tu cotización — el total se suma en tiempo real, y esta placa se queda fija en pantalla mientras eliges.</p>
+                <div class="calc-total-box" id="calcTotalBox">
+                    <div class="ctb-row"><span>Paquete base · 200 invitados</span><span id="ctbBase">$179,800.00</span></div>
+                    <ul class="ctb-extras-list" id="ctbExtras"></ul>
+                    <p class="ctb-vacio" id="ctbVacio">Aún no has agregado extras.</p>
+                    <div class="ctb-pp"><span>Por persona</span><strong id="ctbPorPersona">$899.00</strong></div>
+                    <div class="ctb-total-chico"><span>Inversión total del evento</span><strong id="ctbTotal">$179,800.00</strong></div>
+                </div>
                 <div id="calcGrid"></div>
             </div>
 
@@ -679,7 +738,7 @@
 
             <!-- ══ CONTACTO DIRECTO CON PLANNERS ══ -->
             <div class="planners-contact-section reveal">
-                <h3 class="section-title reveal-left"><i class="fas fa-comments"></i> Contacto Directo con tus Event Planners</h3>
+                <h3 class="section-title reveal reveal-left"><i class="fas fa-comments"></i> Contacto Directo con tus Event Planners</h3>
                 <p class="calc-hint" style="text-align:center;">Toca la imagen de cualquiera de tus planners para abrir su tarjeta de atención personal directa:</p>
                 <div class="planners-grid">
                     <a href="https://primaveraeventsgroup.com/richard-hernandez/" target="_blank" class="planner-card">
@@ -814,17 +873,35 @@
         grid.innerHTML = html;
     }
 
+    const INVITADOS = 200;
+
     function actualizarTotal() {
         const seleccion = Object.values(extrasSeleccionados);
         const extras = seleccion.reduce((s, e) => s + e.precio, 0);
         const totalFinal = TOTAL_BASE + extras;
-        document.getElementById('totalBaseDisplay').innerHTML = moneyFmt(totalFinal) + '<sup>MXN</sup>';
+
+        document.getElementById('totalBaseDisplay').innerHTML = moneyFmt(totalFinal / INVITADOS) + '<sup>MXN</sup>';
+        const teChico = document.getElementById('totalEventoChico');
+        if (teChico) teChico.textContent = moneyFmt(totalFinal) + ' MXN';
         document.getElementById('totalBaseTexto').textContent = moneyFmt(TOTAL_BASE);
         document.getElementById('totalExtrasTexto').textContent = moneyFmt(extras);
         document.getElementById('listaExtras').innerHTML = seleccion
             .map(e => `<li class="price-breakdown-row"><span>+ ${e.nombre}</span><span>${moneyFmt(e.precio)}</span></li>`)
             .join('');
         document.getElementById('desgloseExtras').style.display = seleccion.length ? 'block' : 'none';
+
+        // Placa de total del propio cotizador (la que el cliente tiene fija a la vista)
+        const ctbTotal = document.getElementById('ctbTotal');
+        if (ctbTotal) {
+            ctbTotal.textContent = moneyFmt(totalFinal);
+            const pp = document.getElementById('ctbPorPersona');
+            if (pp) pp.textContent = moneyFmt(totalFinal / INVITADOS);
+            document.getElementById('ctbBase').textContent = moneyFmt(TOTAL_BASE);
+            document.getElementById('ctbExtras').innerHTML = seleccion
+                .map(e => `<li><span>+ ${e.nombre}</span><span>${moneyFmt(e.precio)}</span></li>`)
+                .join('');
+            document.getElementById('ctbVacio').style.display = seleccion.length ? 'none' : 'block';
+        }
     }
 
     window.__toggleExtra = (id, nombre, precio, checked) => {
@@ -898,6 +975,47 @@
         });
     }, { threshold: 0.15 });
     revealEls.forEach(el => revealObserver.observe(el));
+
+    // ══ Controller de Pinning de la placa de totales (Desktop + Móvil) ══
+    (function(){
+        var calcSection = document.querySelector('.calc-section');
+        var calcBox = document.getElementById('calcTotalBox');
+        if (!calcSection || !calcBox) return;
+
+        var placeholder = document.createElement('div');
+        placeholder.className = 'calc-box-placeholder';
+        placeholder.style.display = 'none';
+        calcBox.parentNode.insertBefore(placeholder, calcBox);
+
+        function updatePinning() {
+            var secRect = calcSection.getBoundingClientRect();
+            var boxHeight = calcBox.offsetHeight;
+            var isMobile = window.innerWidth <= 768;
+            var topOffset = isMobile ? 8 : 10;
+
+            // Mantener fija cuando la parte superior de la sección llegue al tope de la ventana
+            if (secRect.top <= topOffset && secRect.bottom >= boxHeight + 40) {
+                if (!calcBox.classList.contains('is-pinned')) {
+                    placeholder.style.height = boxHeight + 'px';
+                    placeholder.style.marginBottom = window.getComputedStyle(calcBox).marginBottom;
+                    placeholder.style.display = 'block';
+                    calcBox.classList.add('is-pinned');
+                }
+                var parentWidth = calcSection.clientWidth;
+                calcBox.style.width = parentWidth + 'px';
+            } else {
+                if (calcBox.classList.contains('is-pinned')) {
+                    calcBox.classList.remove('is-pinned');
+                    calcBox.style.width = '';
+                    placeholder.style.display = 'none';
+                }
+            }
+        }
+
+        window.addEventListener('scroll', updatePinning, { passive: true });
+        window.addEventListener('resize', updatePinning, { passive: true });
+        updatePinning();
+    })();
 
     renderCalculador();
     actualizarTotal();
