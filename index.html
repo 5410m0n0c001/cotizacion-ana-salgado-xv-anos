@@ -59,6 +59,10 @@
         .venue-info-card h5 { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; color:var(--gray-text); margin-bottom:5px; }
         .venue-info-card p { font-size:.9rem; font-weight:600; }
         .venue-note { font-size:.82rem; color:var(--gray-text); text-align:center; margin-bottom:45px; font-style:italic; }
+        .solo-print { display:none !important; }
+        .gallery-block-title { font-size:.85rem; text-transform:uppercase; letter-spacing:2.5px; color:var(--primary-pink); font-weight:700; margin:40px 0 16px; padding-bottom:8px; border-bottom:1px dashed var(--beige); }
+        .include-img-container.is-icon { display:flex; align-items:center; justify-content:center; background:var(--background-light); }
+        .include-img-container.is-icon i { font-size:3rem; color:var(--primary-pink); opacity:.85; }
 
         .section-title { font-size:1.8rem; margin:45px 0 25px; display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--beige); padding-bottom:10px; }
         .section-title i { color:var(--primary-pink); font-size:1.4rem; }
@@ -85,6 +89,10 @@
         .include-content h4 { font-size:1.05rem; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
         .include-content h4 i { color:var(--primary-pink); font-size:.9rem; }
         .include-content p { font-size:.85rem; color:var(--gray-text); }
+
+        .video-showcase-section { margin-bottom:50px; }
+        .video-showcase-frame { position:relative; width:100%; padding-top:56.25%; border-radius:20px; overflow:hidden; border:1px solid var(--beige); box-shadow:0 15px 30px rgba(0,0,0,.1); background:#000; }
+        .video-showcase-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
 
         .croquis-section { margin-bottom:50px; }
         .croquis-frame { position:relative; border-radius:20px; overflow:hidden; border:1px solid var(--beige); box-shadow:0 15px 30px rgba(0,0,0,.08); }
@@ -237,22 +245,28 @@
         .reveal-left.active { transform:none; }
         .reveal-right { transform:translateX(32px); }
         .reveal-right.active { transform:none; }
+        .reveal-zoom { transform:scale(.86); }
+        .reveal-zoom.active { transform:none; }
+        .delay-1 { transition-delay:.08s; } .delay-2 { transition-delay:.16s; }
+        .delay-3 { transition-delay:.24s; } .delay-4 { transition-delay:.32s; }
 
         /* CSS print obligatorio — DIRECTIVES.md sección 9 */
         @media print {
             #preloader, .floating-actions-container, .pdf-section,
             .kit-buttons, .cta-container .btn-wa, audio, .audio-toggle,
-            .calc-total-box, .calc-box-placeholder, .calc-section, .croquis-section { display:none!important; }
-            .include-item, .complemento-card, .venue-info-card,
+            .calc-total-box, .calc-box-placeholder, .calc-section,
+            .croquis-section, .video-showcase-section,
+            .includes-grid, .gallery-block-title, .venue-info-grid, .venue-logo-wrap { display:none!important; }
+            .solo-print { display:block !important; }
+            .complemento-card, .venue-info-card,
             .notes-section, .pricing-section, .kit-section {
                 page-break-inside: avoid!important; break-inside: avoid!important;
             }
             h2, h3, h4, .section-title {
                 page-break-after: avoid!important; break-after: avoid!important;
             }
-            .include-img-container { height: 90px!important; }
-            .includes-grid, .complementos-grid { display: block!important; }
-            .reveal, .reveal-left, .reveal-right { opacity:1 !important; transform:none !important; }
+            .complementos-grid { display: block!important; }
+            .reveal, .reveal-left, .reveal-right, .reveal-zoom { opacity:1 !important; transform:none !important; }
             @page { margin: 1.5cm 1.2cm; }
         }
     </style>
@@ -313,10 +327,22 @@
             <p class="venue-note">Nota: el salón techado de Jardín La Flor tiene un máximo de 200 personas — el acomodo de tu fiesta ocupa exactamente esa capacidad completa.</p>
 
             <h3 class="section-title reveal reveal-left"><i class="fas fa-images"></i> Un Vistazo a Jardín La Flor</h3>
+            <p class="calc-hint">Fotografía real del recinto, tal como lo vas a recibir para tus 200 invitados.</p>
             <div class="includes-grid">
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_ceremonia.png" alt="Área consagrada y jardín de Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-seedling"></i> Jardín y Área Consagrada</h4><p>Vegetación natural, pérgola y pasillo listo para tu ceremonia o entrada de honor.</p></div></div>
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_plano.png" alt="Plano del Salón Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-map"></i> Distribución del Salón</h4><p>Croquis ilustrativo del salón techado; el acomodo final para tus 200 invitados se ajusta en tu diseño de montaje.</p></div></div>
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="logo_jardin_la_flor.png" alt="Identidad Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-heart"></i> Identidad Floral del Recinto</h4><p>Jardín La Flor, un espacio íntimo de estilo cuernavaquense pensado para festejos florales y elegantes.</p></div></div>
+                <div class="include-item reveal reveal-left"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_ceremonia.png" alt="Área consagrada y jardín de Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-seedling"></i> Jardín y Área Consagrada</h4><p>Vegetación natural, pérgola y pasillo listo para tu ceremonia o entrada de honor.</p></div></div>
+                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_salon_techado.webp" alt="Salón techado de Jardín La Flor decorado"></div><div class="include-content"><h4><i class="fas fa-warehouse"></i> Salón Techado Iluminado</h4><p>Salón techado para 200 px, con drapeados de luces cálidas y montaje de gala.</p></div></div>
+                <div class="include-item reveal reveal-right"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_recepcion.png" alt="Área de recepción de Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-door-open"></i> Área de Recepción</h4><p>Recepción elegante y exclusiva, con vista directa al jardín desde la entrada.</p></div></div>
+                <div class="include-item reveal reveal-left"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_cascada.webp" alt="Cascada iluminada de Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-water"></i> Cascada Iluminada</h4><p>Hermosa cascada iluminada rodeada de vegetación natural, ideal para tus fotos.</p></div></div>
+                <div class="include-item reveal reveal-right"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_plano.png" alt="Plano del Salón Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-map"></i> Distribución del Salón</h4><p>Croquis ilustrativo del salón techado; el acomodo final para tus 200 invitados se ajusta en tu diseño de montaje.</p></div></div>
+            </div>
+
+            <!-- ══ Video real de un evento en Jardín La Flor (Primavera Events Group, YouTube) ══ -->
+            <div class="video-showcase-section reveal">
+                <h3 class="section-title"><i class="fas fa-clapperboard"></i> Así se Vive Jardín La Flor</h3>
+                <p class="calc-hint">Resumen oficial de una fiesta de XV años real celebrada en este mismo recinto.</p>
+                <div class="video-showcase-frame">
+                    <iframe src="https://www.youtube.com/embed/7f5Wv9f0qCw?autoplay=1&mute=1&loop=1&playlist=7f5Wv9f0qCw&controls=1&rel=0" title="Los XV Años de Hannah en Jardín La Flor — Primavera Events Group" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
             </div>
 
             <!-- ══ Croquis interactivo real del Salón Jardín La Flor: INCLUIDO EN EL SERVICIO ══ -->
@@ -329,10 +355,94 @@
                 </div>
             </div>
 
-            <!-- ══ DESGLOSE COMPLETO DEL PAQUETE ESENCIA FLORAL ══ -->
-            <h3 class="section-title reveal reveal-left"><i class="fas fa-list-check"></i> Desglose Completo del Paquete Esencia Floral</h3>
-            <p class="calc-hint">Todo lo que se detalla a continuación está <strong>incluido</strong> dentro del costo por persona. No hay conceptos ocultos ni cargos adicionales sobre esta lista.</p>
-            <div class="pricing-table-container">
+            <!-- ══ TODO LO QUE INCLUYE, SERVICIO POR SERVICIO — versión visual en pantalla ══ -->
+            <h3 class="section-title reveal reveal-left"><i class="fas fa-magic"></i> Todo lo que Incluye, Servicio por Servicio</h3>
+            <p class="calc-hint">Cada elemento del Paquete Esencia Floral, con su imagen de referencia. Así se ve exactamente lo que van a recibir el día del evento — todo incluido dentro del costo por persona, sin conceptos ocultos.</p>
+
+            <!-- ═══ BLOQUE 1: RECINTO, ESTACIONAMIENTO Y ÁREAS ═══ -->
+            <div class="gallery-block-title reveal reveal-left">1 · Recinto, Estacionamiento y Áreas</div>
+            <div class="includes-grid">
+                <div class="reveal"><div class="include-item"><div class="include-img-container is-icon"><i class="fas fa-square-parking"></i></div><div class="include-content"><h4><i class="fas fa-square-parking"></i> Estacionamiento</h4><p>Estacionamiento amplio para 60 autos.</p></div></div></div>
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_recepcion.png" alt="Área de recepción"></div><div class="include-content"><h4><i class="fas fa-door-open"></i> Área de Recepción</h4><p>Área de recepción elegante y exclusiva.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_ceremonia.png" alt="Área de jardín"></div><div class="include-content"><h4><i class="fas fa-seedling"></i> Área de Jardín</h4><p>Área de jardín con abundante vegetación.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_cascada.webp" alt="Cascada iluminada"></div><div class="include-content"><h4><i class="fas fa-water"></i> Cascada Iluminada</h4><p>Hermosa cascada iluminada rodeada de vegetación natural.</p></div></div></div>
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_ceremonia.png" alt="Área consagrada"></div><div class="include-content"><h4><i class="fas fa-place-of-worship"></i> Área Consagrada</h4><p>Área consagrada destinada a ceremonias religiosas.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_salon_techado.webp" alt="Salón techado"></div><div class="include-content"><h4><i class="fas fa-warehouse"></i> Salón Techado</h4><p>Salón techado para 200 px máximo, modernista y elegante.</p></div></div></div>
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="tiempodeservicio.webp" alt="Uso del recinto"></div><div class="include-content"><h4><i class="fas fa-clock"></i> Uso del Recinto</h4><p>8 horas continuas de servicio (hasta las 01:00 hrs).</p></div></div></div>
+            </div>
+
+            <!-- ═══ BLOQUE 2: COCTEL DE BIENVENIDA ═══ -->
+            <div class="gallery-block-title reveal reveal-left">2 · Coctel de Bienvenida</div>
+            <div class="includes-grid">
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="periqueras_altas.webp" alt="Mobiliario de bienvenida"></div><div class="include-content"><h4><i class="fas fa-champagne-glasses"></i> Mobiliario de Bienvenida</h4><p>Coctel de bienvenida con periqueras, salas lounge y sombrillas.</p></div></div></div>
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="margaritas.webp" alt="Bebidas de bienvenida"></div><div class="include-content"><h4><i class="fas fa-martini-glass-citrus"></i> Bebidas de Bienvenida</h4><p>Margaritas de sabores sin alcohol, piñada sin alcohol y mojito sin alcohol.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="crudites.webp" alt="Agua fresca y crudités"></div><div class="include-content"><h4><i class="fas fa-carrot"></i> Agua Fresca y Crudités</h4><p>Agua fresca (2 sabores) y crudités con miguelito y chamoy.</p></div></div></div>
+            </div>
+
+            <!-- ═══ BLOQUE 3: MONTAJE Y DECORACIÓN DE BANQUETE ═══ -->
+            <div class="gallery-block-title reveal reveal-left">3 · Montaje y Decoración de Banquete</div>
+            <div class="includes-grid">
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="mesa_principal_rey_reyna.webp" alt="Mesa principal"></div><div class="include-content"><h4><i class="fas fa-crown"></i> Mesa Principal</h4><p>Mesa principal con sillones Rey &amp; Reyna, templete de madera, back con luces vintage y telas.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="centros_mesa_altos.webp" alt="Centros de mesa"></div><div class="include-content"><h4><i class="fas fa-fan"></i> Centros de Mesa</h4><p>Arreglo natural para centro de mesa (redondos, largos y altos).</p></div></div></div>
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="mesa_redonda_tiffany.webp" alt="Mesa redonda o cuadrada"></div><div class="include-content"><h4><i class="fas fa-circle"></i> Mesa Redonda / Cuadrada</h4><p>Mesa redonda (8-10 px) o cuadrada (10-12 px) con mantel blanco y silla Tiffany blanca.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="mesa_campirana.webp" alt="Mesa Campirana"></div><div class="include-content"><h4><i class="fas fa-tree"></i> Mesa Campirana</h4><p>Mesa Campirana de madera (10-12 px) con silla Crossback, Tiffany, Boss o Lotus.</p></div></div></div>
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="mesa_marmol_1.webp" alt="Mesa tipo mármol"></div><div class="include-content"><h4><i class="fas fa-gem"></i> Mesa Tipo Mármol</h4><p>Mesa tipo mármol (10-12 px) con sillas Tiffany, Crossback, Boss o Lotus combinadas.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="cuberteria_fina.webp" alt="Mantelería, loza y cubertería"></div><div class="include-content"><h4><i class="fas fa-utensils"></i> Mantelería, Loza y Cubertería</h4><p>Mantelería, plato base (varios modelos), loza blanca, cubertería fina (plata, oro, gold rose) y cristalería fina.</p></div></div></div>
+            </div>
+
+            <!-- ═══ BLOQUE 4: BANQUETE A 4 TIEMPOS ═══ -->
+            <div class="gallery-block-title reveal reveal-left">4 · Banquete a 4 Tiempos</div>
+            <div class="includes-grid">
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="banquete_entradas.webp" alt="Primer Tiempo: Entradas"></div><div class="include-content"><h4><i class="fas fa-leaf"></i> Primer Tiempo · Entradas</h4><p>Ensaladas frescas o deliciosas cremas cremosas.</p></div></div></div>
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="banquete_plato_fuerte.webp" alt="Segundo Tiempo: Plato Fuerte"></div><div class="include-content"><h4><i class="fas fa-drumstick-bite"></i> Segundo Tiempo · Plato Fuerte</h4><p>Pollo o cerdo con 2 guarniciones, pan y chiles.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="tornafiesta_esquites_chilaquiles.webp" alt="Tercer Tiempo: Tornafiesta"></div><div class="include-content"><h4><i class="fas fa-fire"></i> Tercer Tiempo · Tornafiesta</h4><p>Barra de esquites o chilaquiles, al 60% de invitados.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="menu_infantil.webp" alt="Menú Infantil"></div><div class="include-content"><h4><i class="fas fa-child"></i> Menú Infantil</h4><p>Tiritas de milanesa, hamburguesa o nuggets de pollo con espagueti, papas fritas y golosina sorpresa.</p></div></div></div>
+            </div>
+
+            <!-- ═══ BLOQUE 5: BARRA Y MEZCLADORES ═══ -->
+            <div class="gallery-block-title reveal reveal-left">5 · Barra y Mezcladores</div>
+            <div class="includes-grid">
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="mezcladores.webp" alt="Servicio de mezcladores"></div><div class="include-content"><h4><i class="fas fa-glass-water"></i> Servicio de Mezcladores</h4><p>Hielo, refrescos de la línea Coca-Cola, limón y sal.</p></div></div></div>
+            </div>
+
+            <!-- ═══ BLOQUE 6: EQUIPO DE SERVICIO ═══ -->
+            <div class="gallery-block-title reveal reveal-left">6 · Equipo de Servicio</div>
+            <div class="includes-grid">
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="meseros.webp" alt="Meseros"></div><div class="include-content"><h4><i class="fas fa-concierge-bell"></i> Meseros y Hostess</h4><p>Hostess, Meseros, Barra, Cocina y personal de Baños.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="capitan.webp" alt="Capitán y coordinación"></div><div class="include-content"><h4><i class="fas fa-user-tie"></i> Coordinador General &amp; Capitán</h4><p>Coordinador General y Capitán de Meseros supervisando cada detalle.</p></div></div></div>
+            </div>
+
+            <!-- ═══ BLOQUE 7: DJ PROFESIONAL, AUDIO E ILUMINACIÓN ═══ -->
+            <div class="gallery-block-title reveal reveal-left">7 · DJ Profesional, Audio e Iluminación</div>
+            <div class="includes-grid">
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="dj_mampara_cabina.webp" alt="DJ y mampara"></div><div class="include-content"><h4><i class="fas fa-headphones"></i> DJ Profesional &amp; Mampara</h4><p>Mampara moderna, audio, proyector/pantalla, micrófonos inalámbricos y máquina de humo.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="robot_leds.webp" alt="Cabezas robóticas"></div><div class="include-content"><h4><i class="fas fa-robot"></i> Iluminación Robótica &amp; Láser</h4><p>Cabezas robóticas, láser y 2 chisperos a control remoto.</p></div></div></div>
+            </div>
+
+            <!-- ═══ BLOQUE 8: CORTESÍAS INCLUIDAS ═══ -->
+            <div class="gallery-block-title reveal reveal-left">8 · Cortesías Incluidas</div>
+            <div class="includes-grid">
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="letras_gigantes_iluminadas.webp" alt="Letras XV iluminadas"></div><div class="include-content"><h4><i class="fas fa-font"></i> Letras Decorativas "XV"</h4><p>Letras decorativas iluminadas a elegir "XV" o "LOVE".</p></div></div></div>
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="corazon_rojo_iluminado.webp" alt="Corazón iluminado"></div><div class="include-content"><h4><i class="fas fa-heart"></i> Corazón Iluminado</h4><p>Corazón rojo decorativo iluminado.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="mesa_pastel.webp" alt="Mesas especiales"></div><div class="include-content"><h4><i class="fas fa-cake-candles"></i> Mesas Especiales</h4><p>Mesa especial para pastel y mesa especial para regalos.</p></div></div></div>
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="pirotecnia_fria_chisperos.webp" alt="Chisperos"></div><div class="include-content"><h4><i class="fas fa-fire"></i> Chisperos</h4><p>Detonación de 2 chisperos de pirotecnia en frío.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="alfombra_roja.webp" alt="Alfombra roja"></div><div class="include-content"><h4><i class="fas fa-road"></i> Alfombra Roja</h4><p>Alfombra roja para una entrada espectacular.</p></div></div></div>
+            </div>
+
+            <!-- ═══ BLOQUE 9: SERVICIOS FINALES AL FIRMAR ═══ -->
+            <div class="gallery-block-title reveal reveal-left">9 · Servicios Finales al Firmar</div>
+            <div class="includes-grid">
+                <div class="reveal"><div class="include-item"><div class="include-img-container is-icon"><i class="fas fa-wine-glass"></i></div><div class="include-content"><h4><i class="fas fa-wine-glass"></i> Degustación Exclusiva</h4><p>Degustación exclusiva del menú para 4 personas.</p></div></div></div>
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="templete_back_luces_vintage.webp" alt="Diseño de montaje"></div><div class="include-content"><h4><i class="fas fa-palette"></i> Diseño de Montaje</h4><p>Diseño de montaje según su paleta de colores.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_plano.png" alt="Croquis de distribución"></div><div class="include-content"><h4><i class="fas fa-map"></i> Croquis de Distribución</h4><p>Croquis de distribución detallada para el acomodo de sus 200 invitados.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container is-icon"><i class="fas fa-list-ol"></i></div><div class="include-content"><h4><i class="fas fa-list-ol"></i> Minuto a Minuto</h4><p>Cronograma detallado del evento.</p></div></div></div>
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="coordinacion_servicio.webp" alt="Chat exclusivo"></div><div class="include-content"><h4><i class="fas fa-comments"></i> Chat Exclusivo de Coordinación</h4><p>Medio de comunicación directo con tu equipo de coordinación.</p></div></div></div>
+            </div>
+
+            <!-- ══ DESGLOSE COMPLETO — TABLA SOLO PARA VERSIÓN IMPRESA / PDF ══ -->
+            <h3 class="section-title solo-print"><i class="fas fa-list-check"></i> Desglose Completo del Paquete Esencia Floral</h3>
+            <p class="calc-hint solo-print">Todo lo que se detalla a continuación está <strong>incluido</strong> dentro del costo por persona. No hay conceptos ocultos ni cargos adicionales sobre esta lista.</p>
+            <div class="pricing-table-container solo-print">
                 <table class="pricing-table">
                     <thead>
                         <tr>
@@ -354,7 +464,7 @@
                             <td class="align-right">Incluido</td>
                         </tr>
                         <tr>
-                            <td><div class="tbl-thumb-pend"><i class="fas fa-door-open"></i></div><strong>Área de recepción</strong></td>
+                            <td><img class="tbl-thumb" src="jardin_la_flor_recepcion.png" alt="Área de recepción" loading="lazy"><strong>Área de recepción</strong></td>
                             <td>Área de recepción elegante y exclusiva.</td>
                             <td class="align-center">1</td>
                             <td class="align-right">Incluido</td>
@@ -368,7 +478,7 @@
                             <td class="align-right">Incluido</td>
                         </tr>
                         <tr>
-                            <td><div class="tbl-thumb-pend"><i class="fas fa-water"></i></div><strong>Cascada iluminada</strong></td>
+                            <td><img class="tbl-thumb" src="jardin_la_flor_cascada.webp" alt="Cascada iluminada" loading="lazy"><strong>Cascada iluminada</strong></td>
                             <td>Hermosa cascada iluminada rodeada de vegetación natural.</td>
                             <td class="align-center">1</td>
                             <td class="align-right">Incluido</td>
@@ -382,7 +492,7 @@
                             <td class="align-right">Incluido</td>
                         </tr>
                         <tr>
-                            <td><img class="tbl-thumb" src="jardin_la_flor_plano.png" alt="Salón techado" loading="lazy"><strong>Salón techado</strong></td>
+                            <td><img class="tbl-thumb" src="jardin_la_flor_salon_techado.webp" alt="Salón techado" loading="lazy"><strong>Salón techado</strong></td>
                             <td>Salón techado para 200 px máximo, modernista y elegante.</td>
                             <td class="align-center">1</td>
                             <td class="align-right">Incluido</td>
