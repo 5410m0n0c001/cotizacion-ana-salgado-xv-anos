@@ -12,32 +12,55 @@
             --primary-pink: #F65C7A; --primary-light: #FF8FA3; --primary-dark: #1F1F1F;
             --background-light: #F8F6F4; --white: #FFFFFF; --soft-pink: #FADADD; --beige: #EFE7E1;
             --gold-accent: #C9A96E; --gray-text: #6D6D6D;
+            --dark-grad-end: #3A3A3A;
             --font-serif: 'Playfair Display', serif; --font-sans: 'Poppins', sans-serif;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
+        html, body { overflow-x:hidden !important; max-width:100vw !important; width:100% !important; position:relative; }
         body { font-family: var(--font-sans); background: var(--background-light); color: var(--primary-dark); line-height:1.6; -webkit-font-smoothing:antialiased; }
         h1,h2,h3,h4 { font-family: var(--font-serif); }
 
-        #preloader { position:fixed; top:0; left:0; width:100%; height:100%; background:linear-gradient(135deg,#1f1f1f 0%,#2d1422 100%); z-index:9999; display:flex; align-items:center; justify-content:center; transition:opacity .8s ease, visibility .8s ease; }
+        #preloader { position:fixed; top:0; left:0; width:100vw; height:100vh; height:100dvh; background:linear-gradient(135deg,var(--primary-dark) 0%,var(--dark-grad-end) 100%); z-index:9999; display:flex; align-items:center; justify-content:center; transition:opacity .8s ease, visibility .8s ease; padding:20px; }
         #preloader.fade-out { opacity:0; visibility:hidden; }
-        #preloader video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:.35; z-index:1; }
-        .preloader-overlay { position:relative; z-index:2; text-align:center; width:90%; max-width:480px; background:rgba(255,255,255,.95); backdrop-filter:blur(15px); padding:40px; border-radius:30px; border:2px solid var(--gold-accent); box-shadow:0 25px 55px rgba(0,0,0,.35); }
-        .preloader-logo { width:80px; height:80px; margin-bottom:20px; border-radius:50%; border:2px solid var(--gold-accent); object-fit:cover; }
-        .preloader-title { font-size:1.6rem; margin-bottom:12px; font-weight:700; }
-        .preloader-text { color:var(--gray-text); font-size:.95rem; margin-bottom:25px; }
-        .btn-enter { background:var(--primary-pink); color:var(--white); border:none; padding:14px 42px; border-radius:30px; font-size:.95rem; font-weight:600; cursor:pointer; box-shadow:0 6px 20px rgba(246,92,122,.4); text-transform:uppercase; letter-spacing:1px; }
+        #preloader video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:.65; z-index:1; }
+        .preloader-overlay { position:relative; z-index:2; text-align:center; width:90%; max-width:620px; background:rgba(255,255,255,.88); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); padding:36px 32px; border-radius:28px; border:1.5px solid var(--gold-accent); box-shadow:0 20px 50px rgba(0,0,0,.4); margin:auto; }
+        .preloader-logo { width:70px; height:70px; margin-bottom:14px; border-radius:50%; border:2px solid var(--gold-accent); object-fit:cover; display:inline-block; }
+        .preloader-title { font-size:1.6rem; margin-bottom:10px; font-weight:700; color:var(--primary-dark); }
+        .preloader-text { color:var(--gray-text); font-size:.96rem; margin-bottom:22px; line-height:1.5; }
+        .btn-enter { background:var(--primary-pink); color:var(--white); border:none; padding:12px 32px; border-radius:30px; font-size:.9rem; font-weight:600; cursor:pointer; box-shadow:0 6px 20px rgba(246,92,122,.4); text-transform:uppercase; letter-spacing:0.5px; display:inline-block; max-width:100%; white-space:normal; transition:transform 0.25s ease, background 0.25s ease; }
         .btn-enter:hover { transform:scale(1.04); background:#e04b69; }
 
-        .hero { position:relative; height:60vh; min-height:420px; overflow:hidden; display:flex; align-items:flex-end; justify-content:center; background:url('jardin_la_flor_ceremonia.png') center/cover no-repeat, linear-gradient(135deg,#1f1f1f 0%,#2d1422 100%); }
+        @media (max-width:768px) {
+            .preloader-overlay { padding:22px 16px !important; max-width:340px !important; border-radius:20px !important; background:rgba(255,255,255,.84) !important; }
+            .preloader-logo { width:54px !important; height:54px !important; margin-bottom:8px !important; }
+            .preloader-title { font-size:1.2rem !important; margin-bottom:6px !important; }
+            .preloader-text { font-size:.8rem !important; margin-bottom:14px !important; }
+            .btn-enter { padding:10px 20px !important; font-size:.78rem !important; }
+        }
+
+        .hero { position:relative; height:55vh; min-height:380px; overflow:hidden; display:flex; align-items:flex-end; justify-content:center; background:url('jardin_la_flor_ceremonia.png') center/cover no-repeat, linear-gradient(135deg,var(--primary-dark) 0%,var(--dark-grad-end) 100%); }
         .hero::before { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(31,31,31,.25), rgba(31,31,31,.88)); z-index:1; }
         .hero-content { position:relative; z-index:2; text-align:center; padding:0 20px 60px; color:var(--white); max-width:800px; }
         .hero-eyebrow { font-size:.8rem; letter-spacing:5px; text-transform:uppercase; color:var(--gold-accent); font-weight:600; margin-bottom:12px; }
         .hero h1 { font-size:3rem; font-weight:700; line-height:1.1; text-shadow:0 3px 20px rgba(0,0,0,.6); margin-bottom:10px; }
         .hero-sub { font-size:1.1rem; letter-spacing:3px; text-transform:uppercase; font-weight:300; color:rgba(255,255,255,.9); }
 
-        .container { max-width:1100px; margin:-80px auto 60px; position:relative; z-index:2; padding:0 20px; }
-        .quote-card { background:var(--white); border-radius:30px; box-shadow:0 30px 60px rgba(31,31,31,.08); padding:60px; border:1px solid var(--beige); }
-        @media (max-width:768px) { .quote-card{padding:30px 15px;border-radius:20px;} .hero h1{font-size:2rem;} .container{margin-top:-40px;padding:0 10px;} }
+        .container { max-width:1100px; margin:-80px auto 60px; position:relative; z-index:2; padding:0 20px; overflow-x:hidden !important; width:100% !important; box-sizing:border-box !important; }
+        .quote-card { background:var(--white); border-radius:30px; box-shadow:0 30px 60px rgba(31,31,31,.08); padding:60px; border:1px solid var(--beige); overflow-x:hidden !important; width:100% !important; max-width:100% !important; box-sizing:border-box !important; }
+
+        @media (max-width:768px) {
+            html, body { overflow-x:hidden !important; max-width:100vw !important; width:100% !important; position:relative; }
+            .container{margin-top:-40px;padding:0 6px !important; width:100% !important; max-width:100% !important; overflow-x:hidden !important; box-sizing:border-box !important;}
+            .quote-card{padding:16px 10px !important;border-radius:16px !important; width:100% !important; max-width:100% !important; overflow-x:hidden !important; box-sizing:border-box !important;}
+            .hero h1{font-size:1.8rem;}
+            .pricing-section { padding:18px 10px !important; border-radius:16px !important; width:100% !important; max-width:100% !important; box-sizing:border-box !important; }
+            .price-hero { font-size:2rem !important; word-break:break-word !important; }
+            .price-hero sup { font-size:1rem !important; }
+            .includes-grid { grid-template-columns:1fr !important; gap:16px !important; width:100% !important; max-width:100% !important; box-sizing:border-box !important; }
+            .include-item, .include-img-container, .include-img, .complemento-card, .publicidad-card, .venue-info-card, .calc-item { width:100% !important; max-width:100% !important; box-sizing:border-box !important; }
+            .include-img-container.is-video { min-height:0 !important; width:100% !important; max-width:100% !important; height:auto !important; aspect-ratio:16/9; }
+            .include-video, video { max-width:100% !important; height:auto !important; }
+        }
 
         .venue-logo-wrap { text-align:center; margin-bottom:30px; }
         .venue-logo-wrap a { display:inline-block; text-decoration:none; }
@@ -59,10 +82,6 @@
         .venue-info-card h5 { font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:700; color:var(--gray-text); margin-bottom:5px; }
         .venue-info-card p { font-size:.9rem; font-weight:600; }
         .venue-note { font-size:.82rem; color:var(--gray-text); text-align:center; margin-bottom:45px; font-style:italic; }
-        .solo-print { display:none !important; }
-        .gallery-block-title { font-size:.85rem; text-transform:uppercase; letter-spacing:2.5px; color:var(--primary-pink); font-weight:700; margin:40px 0 16px; padding-bottom:8px; border-bottom:1px dashed var(--beige); }
-        .include-img-container.is-icon { display:flex; align-items:center; justify-content:center; background:var(--background-light); }
-        .include-img-container.is-icon i { font-size:3rem; color:var(--primary-pink); opacity:.85; }
 
         .section-title { font-size:1.8rem; margin:45px 0 25px; display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--beige); padding-bottom:10px; }
         .section-title i { color:var(--primary-pink); font-size:1.4rem; }
@@ -79,29 +98,69 @@
             background:repeating-linear-gradient(45deg,#F5EFEB,#F5EFEB 6px,#EFE7E1 6px,#EFE7E1 12px); }
         .calc-hint { color:var(--gray-text); font-size:.88rem; margin-bottom:18px; }
 
-        .includes-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:25px; margin-bottom:50px; }
-        .include-item { background:var(--white); border:1px solid var(--beige); border-radius:20px; overflow:hidden; height:100%; display:flex; flex-direction:column; transition:all .4s cubic-bezier(.165,.84,.44,1); }
-        .include-item:hover { transform:translateY(-6px); box-shadow:0 15px 30px rgba(0,0,0,.1); border-color:var(--primary-pink); }
-        .include-img-container { width:100%; height:210px; overflow:hidden; position:relative; }
-        .include-img { width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.165,.84,.44,1); }
-        .include-item:hover .include-img { transform:scale(1.08); }
-        .include-content { padding:22px; flex-grow:1; }
-        .include-content h4 { font-size:1.05rem; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+        .includes-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-bottom:45px; width:100% !important; max-width:100% !important; box-sizing:border-box !important; }
+        .include-item { background:var(--white); border:1px solid var(--beige); border-radius:20px; overflow:hidden; }
+        .include-img-container { width:100%; height:260px; overflow:hidden; position:relative; }
+        .include-img { width:100%; height:100%; object-fit:cover; }
+        
+        .solo-print { display:none !important; }
+        .include-img-container.is-figura { height:300px; background:var(--white); }
+        .include-img.figura { object-fit:contain; padding:8px; }
+        .include-content { padding:18px; }
+        .include-content h4 { font-size:1rem; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
         .include-content h4 i { color:var(--primary-pink); font-size:.9rem; }
         .include-content p { font-size:.85rem; color:var(--gray-text); }
+
+        .gallery-block-title { font-size:.85rem; text-transform:uppercase; letter-spacing:2.5px; color:var(--primary-pink); font-weight:700; margin:40px 0 16px; padding-bottom:8px; border-bottom:1px dashed var(--beige); }
+
+        /* Video cards */
+        .include-img-container.is-video { width:100% !important; height:auto !important; aspect-ratio:16/9 !important; min-height:0 !important; background:#000 !important; overflow:hidden !important; display:flex !important; align-items:center !important; justify-content:center !important; border-radius:14px !important; }
+        .include-video, video { width:100% !important; height:100% !important; max-width:100% !important; object-fit:contain !important; background:#000 !important; border:0 !important; display:block !important; }
+        .badge-video { display:inline-flex; align-items:center; gap:5px; background:var(--gold-accent); color:var(--primary-dark); font-size:.6rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:3px 9px; border-radius:30px; margin-left:6px; vertical-align:middle; }
 
         .video-showcase-section { margin-bottom:50px; }
         .video-showcase-frame { position:relative; width:100%; padding-top:56.25%; border-radius:20px; overflow:hidden; border:1px solid var(--beige); box-shadow:0 15px 30px rgba(0,0,0,.1); background:#000; }
         .video-showcase-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
 
-        .croquis-section { margin-bottom:50px; }
-        .croquis-frame { position:relative; border-radius:20px; overflow:hidden; border:1px solid var(--beige); box-shadow:0 15px 30px rgba(0,0,0,.08); }
-        .croquis-preview-img { width:100%; height:auto; max-height:520px; object-fit:contain; display:block; background:#171923; }
-        .btn-croquis { position:absolute; left:50%; bottom:22px; transform:translateX(-50%); background:var(--primary-pink); color:var(--white); padding:14px 30px; border-radius:50px; text-decoration:none; display:inline-flex; align-items:center; gap:10px; font-weight:600; font-size:.9rem; box-shadow:0 10px 25px rgba(246,92,122,.5); transition:all .3s ease; white-space:nowrap; }
-        .btn-croquis:hover { background:#e04b69; transform:translateX(-50%) scale(1.05); }
-        @media (max-width:600px){ .btn-croquis { font-size:.78rem; padding:11px 20px; bottom:14px; } }
+        /* Video Croquis section */
+        .video-section { margin-top:50px; margin-bottom:50px; }
+        .video-frame { position:relative; border-radius:20px; overflow:hidden; border:1px solid var(--beige); background:var(--primary-dark); box-shadow:0 18px 40px rgba(31,31,31,.14); }
+        .video-frame video { width:100%; height:auto; display:block; max-height:78vh; background:var(--primary-dark); object-fit:contain; }
+        .video-full { position:absolute; right:14px; bottom:14px; z-index:4; display:inline-flex; align-items:center; gap:7px; background:rgba(31,31,31,.82); color:var(--white); border:1px solid var(--gold-accent); border-radius:30px; padding:8px 16px; font-size:.78rem; font-weight:600; cursor:pointer; font-family:var(--font-sans); }
+        .video-full:hover { background:var(--primary-pink); }
+        .btn-croquis-inline { display:inline-flex; align-items:center; gap:8px; background:var(--primary-pink); color:var(--white); padding:12px 28px; border-radius:30px; font-weight:600; font-size:.88rem; text-decoration:none; margin-top:16px; box-shadow:0 6px 18px rgba(246,92,122,.35); transition:transform 0.25s ease; }
+        .btn-croquis-inline:hover { transform:scale(1.04); background:#e04b69; }
 
-        .pricing-section { background:linear-gradient(135deg,var(--primary-dark) 0%,#2d1422 100%); border-radius:24px; padding:45px; margin-top:30px; color:var(--white); text-align:center; }
+        /* Minuto a Minuto Slider section */
+        .slides-section { margin-top:50px; margin-bottom:50px; }
+        .slides-wrap { position:relative; }
+        .slides-track { display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:4px 2px 14px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+        .slides-track::-webkit-scrollbar { height:6px; }
+        .slides-track::-webkit-scrollbar-thumb { background:var(--beige); border-radius:10px; }
+        .slide { flex:0 0 auto; width:min(440px, 82vw); scroll-snap-align:center; border-radius:16px; overflow:hidden; border:1px solid var(--beige); background:var(--white); box-shadow:0 10px 26px rgba(31,31,31,.07); transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease; cursor:zoom-in; position:relative; }
+        .slide:hover { transform:translateY(-4px); box-shadow:0 14px 32px rgba(31,31,31,.12); }
+        .slide::after { content:'\f00e'; font-family:'Font Awesome 6 Free'; font-weight:900; position:absolute; right:10px; bottom:10px; background:rgba(31,31,31,.72); color:#fff; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.85rem; opacity:0; transition:opacity .3s; }
+        .slide:hover::after { opacity:1; }
+        .slide img { width:100%; height:auto; display:block; }
+        .slide-nav { position:absolute; top:45%; transform:translateY(-50%); z-index:5; width:42px; height:42px; border-radius:50%; border:1px solid var(--beige); background:var(--white); color:var(--primary-pink); cursor:pointer; font-size:1rem; box-shadow:0 6px 18px rgba(31,31,31,.14); display:flex; align-items:center; justify-content:center; }
+        .slide-nav:hover { background:var(--primary-pink); color:var(--white); }
+        .slide-nav.prev { left:-6px; } .slide-nav.next { right:-6px; }
+        .slides-dots { display:flex; justify-content:center; gap:7px; margin-top:10px; }
+        .slides-dots span { width:7px; height:7px; border-radius:50%; background:var(--beige); transition:all .3s; cursor:pointer; }
+        .slides-dots span.on { background:var(--primary-pink); width:20px; border-radius:10px; }
+        @media (max-width:768px){ .slide-nav { display:none; } }
+
+        /* Visor modal */
+        .visor { position:fixed; inset:0; z-index:10000; background:rgba(20,14,17,.94); display:none; align-items:center; justify-content:center; padding:20px; }
+        .visor.abierto { display:flex; }
+        .visor img { max-width:96vw; max-height:92vh; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,.6); }
+        .visor-cerrar { position:absolute; top:16px; right:20px; background:none; border:none; color:#fff; font-size:2rem; cursor:pointer; line-height:1; }
+        .visor-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:#fff; width:48px; height:48px; border-radius:50%; font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+        .visor-nav:hover { background:var(--primary-pink); }
+        .visor-nav.izq { left:16px; } .visor-nav.der { right:16px; }
+        .visor-contador { position:absolute; bottom:18px; left:0; right:0; text-align:center; color:rgba(255,255,255,.75); font-size:.82rem; letter-spacing:1px; }
+
+        .pricing-section { background:linear-gradient(135deg,var(--primary-dark) 0%,var(--dark-grad-end) 100%); border-radius:24px; padding:45px; margin-top:30px; color:var(--white); text-align:center; }
         .pricing-section h3 { font-size:1.3rem; color:var(--gold-accent); margin-bottom:5px; text-transform:uppercase; letter-spacing:2px; }
         .price-hero { font-size:3.4rem; font-weight:700; margin:15px 0 10px; }
         .price-hero sup { font-size:1.5rem; color:var(--gold-accent); }
@@ -112,12 +171,8 @@
         .price-breakdown { text-align:left; margin-top:20px; border-top:1px solid rgba(255,255,255,.12); padding-top:18px; font-size:.85rem; color:rgba(255,255,255,.85); }
         .price-breakdown-row { display:flex; justify-content:space-between; padding:4px 0; }
 
-        /* ══ Container y Cotizador — necesarios para el pinning de la placa de totales ══ */
-        .quote-card { position:relative; }
         .calc-section { margin-top:45px; padding-top:35px; border-top:1px solid var(--beige); position:relative; }
-
-        /* ══ Placa de total del cotizador dinámico — se fija en pantalla mientras se eligen extras ══ */
-        .calc-total-box { background:linear-gradient(135deg,var(--primary-dark) 0%,#2d1422 100%);
+        .calc-total-box { background:linear-gradient(135deg,var(--primary-dark) 0%,var(--dark-grad-end) 100%);
             color:var(--white); border-radius:18px; padding:18px 22px; margin-bottom:22px; box-shadow:0 14px 30px rgba(31,31,31,.35);
             border:1.5px solid var(--gold-accent); width:100%; box-sizing:border-box; transition:box-shadow .2s ease; }
         .calc-total-box.is-pinned {
@@ -153,7 +208,7 @@
         .calc-category-title:first-child { margin-top:0; }
 
         .complementos-section { margin-top:50px; padding-top:40px; border-top:1px solid var(--beige); }
-        .complementos-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px; margin-top:20px; }
+        .complementos-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px; margin-top:20px; }
         .complemento-card { border-radius:20px; overflow:hidden; border:1px solid var(--beige); background:var(--white); display:flex; }
         .complemento-img { width:120px; object-fit:cover; }
         .complemento-body { padding:18px; flex:1; }
@@ -162,21 +217,21 @@
         .complemento-body p { font-size:.8rem; color:var(--gray-text); margin-bottom:12px; }
         .btn-complemento { display:inline-flex; align-items:center; gap:6px; background:var(--primary-pink); color:var(--white); padding:6px 14px; border-radius:30px; font-weight:600; font-size:.75rem; text-decoration:none; }
 
-        .planners-contact-section { margin-top:50px; padding-top:40px; border-top:1px solid var(--beige); }
+        .planners-contact-section { margin-top:50px; padding:40px 20px; background:linear-gradient(135deg, rgba(253,242,244,.8), rgba(248,250,252,.9)); border-radius:24px; border:1px solid rgba(226,160,182,.25); text-align:center; }
         .planners-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px; max-width:700px; margin:20px auto 0; }
         .planner-card { text-decoration:none; color:inherit; display:flex; flex-direction:column; background:var(--white); border-radius:20px; overflow:hidden; border:1px solid var(--beige); box-shadow:0 8px 20px rgba(0,0,0,.04); transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
         .planner-card:hover { transform:translateY(-6px); box-shadow:0 16px 32px rgba(226,160,182,.3); border-color:var(--primary-pink); }
-        .planner-img-wrap { position:relative; width:100%; height:280px; overflow:hidden; background:#f1f5f9; }
+        .planner-img-wrap { position:relative; width:100%; height:320px; overflow:hidden; background:#f1f5f9; }
         .planner-img { width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .4s ease; }
         .planner-card:hover .planner-img { transform:scale(1.05); }
         .planner-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.65) 0%, rgba(0,0,0,0) 60%); display:flex; align-items:flex-end; justify-content:center; padding:20px; opacity:0.95; transition:opacity .3s ease; }
         .planner-card:hover .planner-overlay { opacity:1; }
         .btn-planner-cta { background:var(--primary-pink); color:white; padding:12px 22px; border-radius:50px; font-size:.88rem; font-weight:600; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(0,0,0,.2); }
         .planner-info { padding:18px 15px; text-align:center; background:var(--white); }
-        .planner-info h4 { font-size:1.15rem; margin-bottom:4px; }
+        .planner-info h4 { font-size:1.15rem; color:var(--primary-dark); margin-bottom:4px; font-family:'Playfair Display', serif; }
         .planner-info p { font-size:.82rem; color:var(--gray-text); margin:0; }
 
-        /* ══ Floating actions (redes + compartir) ══ */
+        /* Floating actions */
         .floating-actions-container { position:fixed; bottom:15px; right:15px; z-index:1000; display:flex; flex-direction:column; align-items:flex-end; gap:15px; }
         .fab-group { display:flex; flex-direction:column; align-items:flex-end; position:relative; }
         .fab-main { width:50px; height:50px; border-radius:50%; background:var(--white); border:none; color:var(--primary-pink); font-size:1.4rem; cursor:pointer; display:flex; align-items:center; justify-content:center; position:relative; transition:all .4s cubic-bezier(.175,.885,.32,1.275); box-shadow:0 6px 18px rgba(0,0,0,.15); z-index:2; }
@@ -190,7 +245,7 @@
         .fab-group.active .fab-main { transform:rotate(15deg) scale(.9); filter:brightness(1.2); }
 
         .expo-section { margin-top:50px; }
-        .expo-card { background:linear-gradient(135deg,#1a1a1a 0%,#333 100%); border-radius:24px; display:flex; overflow:hidden; color:white; box-shadow:0 20px 40px rgba(0,0,0,.2); align-items:stretch; flex-wrap:wrap; }
+        .expo-card { background:linear-gradient(135deg,var(--primary-dark) 0%,var(--dark-grad-end) 100%); border-radius:24px; display:flex; overflow:hidden; color:white; box-shadow:0 20px 40px rgba(0,0,0,.2); align-items:stretch; flex-wrap:wrap; }
         .expo-content { padding:40px; flex:1; min-width:260px; }
         .expo-badge { background:var(--primary-pink); padding:6px 15px; border-radius:50px; font-size:.8rem; text-transform:uppercase; font-weight:600; letter-spacing:1px; display:inline-block; margin-bottom:18px; }
         .expo-content h3 { font-size:1.7rem; margin-bottom:12px; line-height:1.2; }
@@ -201,11 +256,15 @@
         .expo-img-box img { width:100%; height:100%; object-fit:cover; min-height:200px; }
 
         .publicidad-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:20px; }
-        .publicidad-card { display:block; border-radius:18px; overflow:hidden; border:1px solid var(--beige); transition:transform .3s ease; }
+        .publicidad-card { display:block; border-radius:18px; overflow:hidden; border:1px solid var(--beige); transition:transform .3s ease; position:relative; }
         .publicidad-card:hover { transform:translateY(-4px); }
         .publicidad-card img { width:100%; height:200px; object-fit:cover; display:block; }
+        .publicidad-label { position:absolute; left:0; right:0; bottom:0; display:block; text-align:center;
+            background:linear-gradient(to top, rgba(31,31,31,.92) 0%, rgba(31,31,31,.72) 60%, rgba(31,31,31,0) 100%);
+            color:var(--white); font-size:.82rem; font-weight:600; letter-spacing:.5px; padding:22px 10px 12px; }
+        .publicidad-card:hover .publicidad-label { background:linear-gradient(to top, var(--primary-pink) 0%, rgba(246,92,122,.75) 60%, rgba(246,92,122,0) 100%); }
 
-        .kit-section { margin-top:50px; background:linear-gradient(135deg,var(--primary-dark) 0%,#2d1422 100%); border-radius:20px; padding:40px; color:white; display:flex; flex-wrap:wrap; align-items:center; gap:30px; }
+        .kit-section { margin-top:50px; background:linear-gradient(135deg,var(--primary-dark) 0%,var(--dark-grad-end) 100%); border-radius:20px; padding:40px; color:white; display:flex; flex-wrap:wrap; align-items:center; gap:30px; }
         .kit-content { flex:1; min-width:250px; }
         .kit-badge { background:var(--gold-accent); display:inline-block; padding:4px 12px; border-radius:50px; font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; color:var(--primary-dark); }
         .kit-content h3 { font-size:1.6rem; margin-bottom:8px; }
@@ -213,12 +272,13 @@
         .kit-buttons { display:flex; flex-direction:column; gap:10px; }
         .btn-kit { display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:50px; font-weight:600; font-size:.8rem; text-decoration:none; background:var(--primary-pink); color:white; white-space:nowrap; }
 
-        .signature-section { text-align:center; margin-top:40px; }
-        .signature-section video { max-width:280px; width:100%; height:auto; mix-blend-mode:multiply; }
+        .signature-section { text-align:center; margin:26px 0 10px; }
+        .signature-section video { max-width:260px; width:100%; aspect-ratio:16/9; height:auto; object-fit:contain; display:inline-block; border-radius:12px; }
 
         .pdf-section { margin-top:40px; text-align:center; padding:30px; background:var(--white); border:1px solid var(--beige); border-radius:20px; }
         .pdf-section p { color:var(--gray-text); margin-bottom:15px; font-size:.85rem; }
-        .btn-pdf { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#c0392b,#e74c3c); color:white; padding:12px 30px; border-radius:50px; font-weight:600; font-size:.9rem; border:none; cursor:pointer; font-family:var(--font-sans); }
+        .btn-pdf { display:inline-flex; align-items:center; gap:8px; background:var(--primary-dark); color:var(--white); padding:12px 30px; border-radius:50px; font-weight:600; font-size:.9rem; border:1px solid var(--gold-accent); cursor:pointer; font-family:var(--font-sans); }
+        .btn-pdf:hover { background:var(--dark-grad-end); }
 
         .notes-section { margin-top:40px; padding:30px; border:1px solid var(--beige); border-radius:20px; background:var(--white); }
         .notes-section h3 { font-size:1.25rem; margin-bottom:14px; display:flex; align-items:center; gap:10px; }
@@ -250,31 +310,42 @@
         .delay-1 { transition-delay:.08s; } .delay-2 { transition-delay:.16s; }
         .delay-3 { transition-delay:.24s; } .delay-4 { transition-delay:.32s; }
 
-        /* CSS print obligatorio — DIRECTIVES.md sección 9 */
+        /* Print styles */
         @media print {
             #preloader, .floating-actions-container, .pdf-section,
-            .kit-buttons, .cta-container .btn-wa, audio, .audio-toggle,
-            .calc-total-box, .calc-box-placeholder, .calc-section,
-            .croquis-section, .video-showcase-section,
-            .includes-grid, .gallery-block-title, .venue-info-grid, .venue-logo-wrap { display:none!important; }
+            .kit-section, .cta-container, audio, .audio-toggle,
+            .slides-section, .video-section, .visor, .expo-section, .publicidad-section, .signature-section, .complementos-section,
+            .includes-grid, .gallery-block-title, .calc-total-box, .calc-hint,
+            .venue-info-grid, .venue-logo-wrap, footer, header, .calc-section { display:none !important; }
+
             .solo-print { display:block !important; }
-            .complemento-card, .venue-info-card,
-            .notes-section, .pricing-section, .kit-section {
-                page-break-inside: avoid!important; break-inside: avoid!important;
+            .solo-print .tbl-thumb, .solo-print .tbl-thumb-pend { display:none !important; }
+
+            * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; box-sizing:border-box !important; }
+
+            @page {
+                size: letter portrait;
+                margin: 1.2cm 1.4cm;
             }
-            h2, h3, h4, .section-title {
-                page-break-after: avoid!important; break-after: avoid!important;
-            }
-            .complementos-grid { display: block!important; }
-            .reveal, .reveal-left, .reveal-right, .reveal-zoom { opacity:1 !important; transform:none !important; }
-            @page { margin: 1.5cm 1.2cm; }
+
+            body { background:#fff !important; font-size:8.5pt !important; line-height:1.35 !important; color:#1F1F1F !important; }
+            .container { margin:0 !important; padding:0 !important; max-width:100% !important; width:100% !important; }
+            .quote-card { box-shadow:none !important; padding:0 !important; border:none !important; background:transparent !important; overflow:visible !important; }
+
+            .header-info { border-bottom:1px solid var(--beige) !important; padding-bottom:12px !important; margin-bottom:14px !important; gap:12px !important; }
+            .header-main h2 { font-size:14pt !important; color:var(--primary-pink); margin-bottom:4px !important; font-family:'Playfair Display', serif; }
+            .header-main p { font-size:8.2pt !important; line-height:1.35 !important; }
+            .badge-event { background:var(--soft-pink) !important; color:var(--primary-pink) !important; font-size:7pt !important; padding:3px 12px !important; margin-top:6px !important; border-radius:12px !important; font-weight:600; display:inline-block !important; }
+            .info-box { padding:6px 12px !important; min-width:85px !important; background:var(--background-light) !important; border:1px solid var(--beige) !important; border-radius:8px !important; text-align:center; }
+            .info-box span { font-size:6.5pt !important; margin-bottom:2px !important; text-transform:uppercase; letter-spacing:0.5px; }
+            .info-box strong { font-size:10pt !important; color:var(--primary-pink); }
         }
     </style>
 </head>
 <body>
 
     <div id="preloader">
-        <video id="preloaderVideo" autoplay muted loop playsinline preload="auto">
+        <video id="preloaderVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
             <source src="precarga.mp4" type="video/mp4">
         </video>
         <div class="preloader-overlay">
@@ -336,22 +407,12 @@
                 <div class="include-item reveal reveal-right"><div class="include-img-container"><img class="include-img" src="jardin_la_flor_plano.png" alt="Plano del Salón Jardín La Flor"></div><div class="include-content"><h4><i class="fas fa-map"></i> Distribución del Salón</h4><p>Croquis ilustrativo del salón techado; el acomodo final para tus 200 invitados se ajusta en tu diseño de montaje.</p></div></div>
             </div>
 
-            <!-- ══ Video real de un evento en Jardín La Flor (Primavera Events Group, YouTube) ══ -->
+            <!-- ══ Video real de un evento en Jardín La Flor (YouTube) ══ -->
             <div class="video-showcase-section reveal">
                 <h3 class="section-title"><i class="fas fa-clapperboard"></i> Así se Vive Jardín La Flor</h3>
                 <p class="calc-hint">Resumen oficial de una fiesta de XV años real celebrada en este mismo recinto.</p>
                 <div class="video-showcase-frame">
                     <iframe src="https://www.youtube.com/embed/7f5Wv9f0qCw?autoplay=1&mute=1&loop=1&playlist=7f5Wv9f0qCw&controls=1&rel=0" title="Los XV Años de Hannah en Jardín La Flor — Primavera Events Group" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                </div>
-            </div>
-
-            <!-- ══ Croquis interactivo real del Salón Jardín La Flor: INCLUIDO EN EL SERVICIO ══ -->
-            <div class="croquis-section reveal">
-                <h3 class="section-title"><i class="fas fa-map"></i> Croquis Interactivo 2D y 3D <span style="font-size:0.8rem; background:var(--gold-accent); color:var(--white); padding:3px 10px; border-radius:12px; vertical-align:middle; font-weight:600; text-transform:uppercase; margin-left:8px;">Incluido</span></h3>
-                <p class="calc-hint">Al firmar contrato diseñamos el montaje según tu paleta de colores y te entregamos el croquis de distribución, el minuto a minuto y un chat directo con coordinación. Mientras tanto, puedes abrir y mover en vivo la distribución real del Salón Jardín La Flor en 2D y 3D:</p>
-                <div class="croquis-frame">
-                    <img src="jardin_la_flor_plano.png" alt="Plano del Salón Jardín La Flor" class="croquis-preview-img">
-                    <a class="btn-croquis" href="https://5410m0n0c001.github.io/jardin-la-flor-plano/" target="_blank"><i class="fas fa-cube"></i> Abrir Croquis Interactivo 2D/3D</a>
                 </div>
             </div>
 
@@ -362,9 +423,9 @@
             <!-- ═══ BLOQUE 1: RECINTO, ESTACIONAMIENTO Y ÁREAS ═══ -->
             <div class="gallery-block-title reveal reveal-left">1 · Recinto, Estacionamiento y Áreas</div>
             <div class="includes-grid">
-                <div class="reveal"><div class="include-item"><div class="include-img-container is-icon"><i class="fas fa-square-parking"></i></div><div class="include-content"><h4><i class="fas fa-square-parking"></i> Estacionamiento</h4><p>Estacionamiento amplio para 60 autos.</p></div></div></div>
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="finca_valet_parking.webp" alt="Estacionamiento de la quinta"></div><div class="include-content"><h4><i class="fas fa-square-parking"></i> Estacionamiento Propio</h4><p>Estacionamiento amplio e iluminado para 60 autos.</p></div></div></div>
                 <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_recepcion.png" alt="Área de recepción"></div><div class="include-content"><h4><i class="fas fa-door-open"></i> Área de Recepción</h4><p>Área de recepción elegante y exclusiva.</p></div></div></div>
-                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_ceremonia.png" alt="Área de jardín"></div><div class="include-content"><h4><i class="fas fa-seedling"></i> Área de Jardín</h4><p>Área de jardín con abundante vegetación.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_ceremonia.png" alt="Área de jardín"></div><div class="include-content"><h4><i class="fas fa-seedling"></i> Área de Jardín</h4><p>Área de jardín con abundante vegetación natural.</p></div></div></div>
                 <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_cascada.webp" alt="Cascada iluminada"></div><div class="include-content"><h4><i class="fas fa-water"></i> Cascada Iluminada</h4><p>Hermosa cascada iluminada rodeada de vegetación natural.</p></div></div></div>
                 <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_ceremonia.png" alt="Área consagrada"></div><div class="include-content"><h4><i class="fas fa-place-of-worship"></i> Área Consagrada</h4><p>Área consagrada destinada a ceremonias religiosas.</p></div></div></div>
                 <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_salon_techado.webp" alt="Salón techado"></div><div class="include-content"><h4><i class="fas fa-warehouse"></i> Salón Techado</h4><p>Salón techado para 200 px máximo, modernista y elegante.</p></div></div></div>
@@ -405,38 +466,82 @@
                 <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="mezcladores.webp" alt="Servicio de mezcladores"></div><div class="include-content"><h4><i class="fas fa-glass-water"></i> Servicio de Mezcladores</h4><p>Hielo, refrescos de la línea Coca-Cola, limón y sal.</p></div></div></div>
             </div>
 
-            <!-- ═══ BLOQUE 6: EQUIPO DE SERVICIO ═══ -->
-            <div class="gallery-block-title reveal reveal-left">6 · Equipo de Servicio</div>
+            <!-- ═══ BLOQUE 6: EQUIPO DE SERVICIO Y STAFF ═══ -->
+            <div class="gallery-block-title reveal reveal-left">6 · Equipo de Servicio y Staff</div>
             <div class="includes-grid">
-                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="meseros.webp" alt="Meseros"></div><div class="include-content"><h4><i class="fas fa-concierge-bell"></i> Meseros y Hostess</h4><p>Hostess, Meseros, Barra, Cocina y personal de Baños.</p></div></div></div>
-                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="capitan.webp" alt="Capitán y coordinación"></div><div class="include-content"><h4><i class="fas fa-user-tie"></i> Coordinador General &amp; Capitán</h4><p>Coordinador General y Capitán de Meseros supervisando cada detalle.</p></div></div></div>
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container is-figura"><img class="include-img figura" loading="lazy" src="capitan.webp" alt="Capitán de meseros y staff"></div><div class="include-content"><h4><i class="fas fa-user-tie"></i> Capitán de Meseros &amp; Staff</h4><p>Capitán de meseros ejecutando la supervisión continua del banquete y meseros capacitados.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container is-figura"><img class="include-img figura" loading="lazy" src="coordinacion_servicio.webp" alt="Coordinación del evento"></div><div class="include-content"><h4><i class="fas fa-clipboard-check"></i> Coordinador General</h4><p>Coordinación ejecutiva en campo de principio a fin, logística y atención a anfitriones.</p></div></div></div>
+                <div class="reveal"><div class="include-item"><div class="include-img-container is-figura"><img class="include-img figura" loading="lazy" src="hostess.webp" alt="Hostess y recepción"></div><div class="include-content"><h4><i class="fas fa-concierge-bell"></i> Hostess &amp; Personal de Recepción</h4><p>Recepción de invitados, asignación de mesas y personal capacitado para sanitarios y barra.</p></div></div></div>
             </div>
 
             <!-- ═══ BLOQUE 7: DJ PROFESIONAL, AUDIO E ILUMINACIÓN ═══ -->
             <div class="gallery-block-title reveal reveal-left">7 · DJ Profesional, Audio e Iluminación</div>
             <div class="includes-grid">
-                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="dj_mampara_cabina.webp" alt="DJ y mampara"></div><div class="include-content"><h4><i class="fas fa-headphones"></i> DJ Profesional &amp; Mampara</h4><p>Mampara moderna, audio, proyector/pantalla, micrófonos inalámbricos y máquina de humo.</p></div></div></div>
-                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="robot_leds.webp" alt="Cabezas robóticas"></div><div class="include-content"><h4><i class="fas fa-robot"></i> Iluminación Robótica &amp; Láser</h4><p>Cabezas robóticas, láser y 2 chisperos a control remoto.</p></div></div></div>
+                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="dj_mampara_cabina.webp" alt="DJ y mampara moderna"></div><div class="include-content"><h4><i class="fas fa-headphones"></i> DJ Profesional &amp; Cabina Iluminada</h4><p>DJ de amplia experiencia con mampara moderna, audio profesional e iluminación de alta gama.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="pista_leds_5x5.webp" alt="Pista de baile e iluminación robótica"></div><div class="include-content"><h4><i class="fas fa-bolt"></i> Iluminación Robótica &amp; Pista</h4><p>Cabezas robóticas en estructura truss, láser, máquina de humo y proyector/pantalla.</p></div></div></div>
             </div>
 
-            <!-- ═══ BLOQUE 8: CORTESÍAS INCLUIDAS ═══ -->
-            <div class="gallery-block-title reveal reveal-left">8 · Cortesías Incluidas</div>
+            <!-- ═══ BLOQUE 8: CORTESÍAS Y CABINAS DE EXPERIENCIA ═══ -->
+            <div class="gallery-block-title reveal reveal-left">8 · Cortesías y Cabinas de Experiencia</div>
             <div class="includes-grid">
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container is-video"><video id="videoCabina360" class="include-video" autoplay muted loop playsinline webkit-playsinline poster="cabina_360.webp"><source src="cabina_360_video.mp4" type="video/mp4"></video></div><div class="include-content"><h4><i class="fas fa-camera-retro"></i> Cabina 360° <span class="badge-video"><i class="fas fa-play"></i> Video</span></h4><p>Plataforma giratoria de video en 360° con efectos slow-motion y luces LED para souvenirs de tus invitados.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="cabina_inflable.jpg" alt="Cabina Inflable de fotos"></div><div class="include-content"><h4><i class="fas fa-box"></i> Cabina Inflable de Fotos</h4><p>Cabina inflable iluminada con luces LED para fotos instantáneas y souvenirs.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="foto_book.jpg" alt="Foto Book / Audio Book"></div><div class="include-content"><h4><i class="fas fa-book-open"></i> Foto Book / Audio Book</h4><p>Álbum de recuerdos fotográfico e interactivo (Phonebook) para los mensajes de los invitados.</p></div></div></div>
                 <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="letras_gigantes_iluminadas.webp" alt="Letras XV iluminadas"></div><div class="include-content"><h4><i class="fas fa-font"></i> Letras Decorativas "XV"</h4><p>Letras decorativas iluminadas a elegir "XV" o "LOVE".</p></div></div></div>
                 <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="corazon_rojo_iluminado.webp" alt="Corazón iluminado"></div><div class="include-content"><h4><i class="fas fa-heart"></i> Corazón Iluminado</h4><p>Corazón rojo decorativo iluminado.</p></div></div></div>
                 <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="mesa_pastel.webp" alt="Mesas especiales"></div><div class="include-content"><h4><i class="fas fa-cake-candles"></i> Mesas Especiales</h4><p>Mesa especial para pastel y mesa especial para regalos.</p></div></div></div>
-                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="pirotecnia_fria_chisperos.webp" alt="Chisperos"></div><div class="include-content"><h4><i class="fas fa-fire"></i> Chisperos</h4><p>Detonación de 2 chisperos de pirotecnia en frío.</p></div></div></div>
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="pirotecnia_fria_chisperos.webp" alt="Chisperos"></div><div class="include-content"><h4><i class="fas fa-fire"></i> Chisperos de Pirotecnia en Frío</h4><p>Detonación de chisperos inalámbricos de pirotecnia en frío para el momento estelar.</p></div></div></div>
                 <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="alfombra_roja.webp" alt="Alfombra roja"></div><div class="include-content"><h4><i class="fas fa-road"></i> Alfombra Roja</h4><p>Alfombra roja para una entrada espectacular.</p></div></div></div>
             </div>
 
-            <!-- ═══ BLOQUE 9: SERVICIOS FINALES AL FIRMAR ═══ -->
-            <div class="gallery-block-title reveal reveal-left">9 · Servicios Finales al Firmar</div>
+            <!-- ═══ BLOQUE 9: BENEFICIOS AL FIRMAR CONTRATO ═══ -->
+            <div class="gallery-block-title reveal reveal-left">9 · Beneficios Exclusivos al Firmar Contrato</div>
             <div class="includes-grid">
-                <div class="reveal"><div class="include-item"><div class="include-img-container is-icon"><i class="fas fa-wine-glass"></i></div><div class="include-content"><h4><i class="fas fa-wine-glass"></i> Degustación Exclusiva</h4><p>Degustación exclusiva del menú para 4 personas.</p></div></div></div>
-                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="templete_back_luces_vintage.webp" alt="Diseño de montaje"></div><div class="include-content"><h4><i class="fas fa-palette"></i> Diseño de Montaje</h4><p>Diseño de montaje según su paleta de colores.</p></div></div></div>
-                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="jardin_la_flor_plano.png" alt="Croquis de distribución"></div><div class="include-content"><h4><i class="fas fa-map"></i> Croquis de Distribución</h4><p>Croquis de distribución detallada para el acomodo de sus 200 invitados.</p></div></div></div>
-                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container is-icon"><i class="fas fa-list-ol"></i></div><div class="include-content"><h4><i class="fas fa-list-ol"></i> Minuto a Minuto</h4><p>Cronograma detallado del evento.</p></div></div></div>
-                <div class="reveal"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="coordinacion_servicio.webp" alt="Chat exclusivo"></div><div class="include-content"><h4><i class="fas fa-comments"></i> Chat Exclusivo de Coordinación</h4><p>Medio de comunicación directo con tu equipo de coordinación.</p></div></div></div>
+                <div class="reveal reveal-zoom"><div class="include-item"><div class="include-img-container is-video"><video id="videoDegustacion" class="include-video" autoplay muted loop playsinline webkit-playsinline poster="banquete_entradas.webp"><source src="degustacion_video.mp4" type="video/mp4"></video></div><div class="include-content"><h4><i class="fas fa-wine-glass-empty"></i> Degustación Exclusiva para 4 Px <span class="badge-video"><i class="fas fa-play"></i> Video</span></h4><p>Prueban el menú completo a 4 tiempos en sesión exclusiva antes de la fiesta y eligen sus platillos favoritos con total tranquilidad.</p></div></div></div>
+                <div class="reveal reveal-left"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="templete_back_luces_vintage.webp" alt="Diseño de montaje"></div><div class="include-content"><h4><i class="fas fa-palette"></i> Diseño de Montaje Personalizado</h4><p>Diseño de montaje según tu paleta de colores y selección de mobiliario.</p></div></div></div>
+                <div class="reveal reveal-right"><div class="include-item"><div class="include-img-container"><img class="include-img" loading="lazy" src="coordinacion_servicio.webp" alt="Chat exclusivo"></div><div class="include-content"><h4><i class="fas fa-comments"></i> Chat Exclusivo de Coordinación</h4><p>Canal de comunicación directo y permanente con tu equipo de planners y coordinación.</p></div></div></div>
+            </div>
+
+            <!-- ══ Croquis interactivo real en Video 2D y 3D: INCLUIDO EN EL SERVICIO ══ -->
+            <div class="video-section reveal">
+                <h3 class="section-title"><i class="fas fa-map"></i> Croquis Interactivo 2D y 3D <span style="font-size:0.8rem; background:var(--gold-accent); color:var(--white); padding:3px 10px; border-radius:12px; vertical-align:middle; font-weight:600; text-transform:uppercase; margin-left:8px;">Incluido</span></h3>
+                <p class="calc-hint">Al firmar contrato diseñamos el montaje según tu paleta de colores y te entregamos el croquis de distribución, el minuto a minuto y un chat directo con coordinación. Mientras tanto, puedes reproducir la distribución en video y abrir la versión interactiva 2D y 3D:</p>
+                <div class="video-frame">
+                    <video id="videoCroquis" controls autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="jardin_la_flor_plano.png">
+                        <source src="croquis_interactivo.mp4" type="video/mp4">
+                        <source src="croquis_interactivo.webm" type="video/webm">
+                    </video>
+                    <button class="video-full" id="btnFullCroquis" title="Ver en pantalla completa"><i class="fas fa-expand"></i> Pantalla completa</button>
+                </div>
+                <div style="text-align:center;">
+                    <a class="btn-croquis-inline" href="https://5410m0n0c001.github.io/jardin-la-flor-plano/" target="_blank"><i class="fas fa-cube"></i> Abrir Croquis Interactivo 2D / 3D</a>
+                </div>
+            </div>
+
+            <!-- ══ Minuto a minuto: Ficha técnica en Slider interactivo ══ -->
+            <div class="slides-section reveal">
+                <h3 class="section-title"><i class="fas fa-list-ol"></i> Ficha Técnica: Minuto a Minuto del Evento <span style="font-size:0.8rem; background:var(--gold-accent); color:var(--white); padding:3px 10px; border-radius:12px; vertical-align:middle; font-weight:600; text-transform:uppercase; margin-left:8px;">Incluido</span></h3>
+                <p class="calc-hint">Al firmar contrato recibes este cronograma detallado del evento sin costo adicional. Toca cualquier hoja para verla a pantalla completa o desliza para recorrerla.</p>
+                <div class="slides-wrap">
+                    <button class="slide-nav prev" id="slidePrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slides-track" id="slidesTrack">
+                        <div class="slide"><img src="slide_minuto_01.png" alt="Ficha técnica minuto a minuto, hoja 1" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_02.png" alt="Ficha técnica minuto a minuto, hoja 2" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_04.png" alt="Ficha técnica minuto a minuto, hoja 4" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_05.webp" alt="Ficha técnica minuto a minuto, hoja 5" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_06.png" alt="Ficha técnica minuto a minuto, hoja 6" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_07.webp" alt="Ficha técnica minuto a minuto, hoja 7" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_08.png" alt="Ficha técnica minuto a minuto, hoja 8" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_09.png" alt="Ficha técnica minuto a minuto, hoja 9" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_10.png" alt="Ficha técnica minuto a minuto, hoja 10" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_11.webp" alt="Ficha técnica minuto a minuto, hoja 11" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_12.png" alt="Ficha técnica minuto a minuto, hoja 12" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_13.png" alt="Ficha técnica minuto a minuto, hoja 13" loading="lazy"></div>
+                        <div class="slide"><img src="slide_minuto_14.png" alt="Ficha técnica minuto a minuto, hoja 14" loading="lazy"></div>
+                    </div>
+                    <button class="slide-nav next" id="slideNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="slides-dots" id="slidesDots"></div>
             </div>
 
             <!-- ══ DESGLOSE COMPLETO — TABLA SOLO PARA VERSIÓN IMPRESA / PDF ══ -->
@@ -457,7 +562,7 @@
 
                         <tr style="background:var(--soft-pink);"><td colspan="5"><strong>1 · RECINTO, ESTACIONAMIENTO Y ÁREAS</strong></td></tr>
                         <tr>
-                            <td><div class="tbl-thumb-pend"><i class="fas fa-square-parking"></i></div><strong>Estacionamiento</strong></td>
+                            <td><img class="tbl-thumb" src="finca_valet_parking.webp" alt="Estacionamiento" loading="lazy"><strong>Estacionamiento</strong></td>
                             <td>Estacionamiento amplio para 60 autos.</td>
                             <td class="align-center">1</td>
                             <td class="align-right">Incluido</td>
@@ -580,7 +685,7 @@
                         <tr style="background:var(--soft-pink);"><td colspan="5"><strong>4 · BANQUETE A 4 TIEMPOS</strong></td></tr>
                         <tr>
                             <td><img class="tbl-thumb" src="banquete_plato_fuerte.webp" alt="Banquete a 4 tiempos" loading="lazy"><strong>Banquete completo</strong></td>
-                            <td>Banquete a 4 tiempos: Entrada, Plato Fuerte, Tornafiesta y Menú Infantil incluido. Ver estructura detallada del menú más abajo.</td>
+                            <td>Banquete a 4 tiempos: Entrada, Plato Fuerte, Tornafiesta y Menú Infantil incluido.</td>
                             <td class="align-center">200 Px</td>
                             <td class="align-right">Incluido</td>
                             <td class="align-right">Incluido</td>
@@ -612,7 +717,7 @@
                         <tr>
                             <td>
                                 <img class="tbl-thumb" src="dj_mampara_cabina.webp" alt="DJ y mampara" loading="lazy">
-                                <img class="tbl-thumb" src="robot_leds.webp" alt="Cabezas robóticas" loading="lazy">
+                                <img class="tbl-thumb" src="pista_leds_5x5.webp" alt="Pista de leds" loading="lazy">
                                 <strong>DJ profesional</strong>
                             </td>
                             <td>Mampara moderna, audio/iluminación LED, cabezas robóticas, proyector/pantalla, accesorios de animación, micrófonos inalámbricos, láser, máquina de humo y 2 chisperos a control remoto.</td>
@@ -621,7 +726,7 @@
                             <td class="align-right">Incluido</td>
                         </tr>
 
-                        <tr style="background:var(--soft-pink);"><td colspan="5"><strong>8 · CORTESÍAS INCLUIDAS</strong></td></tr>
+                        <tr style="background:var(--soft-pink);"><td colspan="5"><strong>8 · CORTESÍAS E ILUMINACIÓN</strong></td></tr>
                         <tr>
                             <td><img class="tbl-thumb" src="letras_gigantes_iluminadas.webp" alt="Letras XV iluminadas" loading="lazy"><strong>Letras decorativas "XV"</strong></td>
                             <td>Letras decorativas iluminadas a elegir "XV" o "LOVE".</td>
@@ -665,7 +770,7 @@
                         <tr style="background:var(--soft-pink);"><td colspan="5"><strong>9 · SERVICIOS FINALES AL FIRMAR</strong></td></tr>
                         <tr>
                             <td><img class="tbl-thumb" src="banquete_entradas.webp" alt="Degustación" loading="lazy"><strong>Degustación exclusiva</strong></td>
-                            <td>Degustación exclusiva del menú.</td>
+                            <td>Degustación exclusiva del menú para 4 personas.</td>
                             <td class="align-center">4 Px</td>
                             <td class="align-right">Cortesía</td>
                             <td class="align-right">Cortesía</td>
@@ -710,15 +815,6 @@
                 </table>
             </div>
 
-            <!-- ══ ESTRUCTURA DEL MENÚ (4 TIEMPOS) ══ -->
-            <h3 class="section-title reveal reveal-left"><i class="fas fa-utensils"></i> Estructura del Banquete — 4 Tiempos</h3>
-            <div class="includes-grid">
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="banquete_entradas.webp" alt="Primer Tiempo: Entradas"></div><div class="include-content"><h4><i class="fas fa-leaf"></i> Primer Tiempo: Entradas</h4><p>Ensaladas frescas o deliciosas cremas cremosas.</p></div></div>
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="banquete_plato_fuerte.webp" alt="Segundo Tiempo: Plato Fuerte"></div><div class="include-content"><h4><i class="fas fa-drumstick-bite"></i> Segundo Tiempo: Plato Fuerte</h4><p>Pollo o cerdo con 2 guarniciones, pan y chiles.</p></div></div>
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="tornafiesta_esquites_chilaquiles.webp" alt="Tercer Tiempo: Tornafiesta"></div><div class="include-content"><h4><i class="fas fa-fire"></i> Tercer Tiempo: Tornafiesta</h4><p>Barra de esquites o chilaquiles, al 60% de invitados.</p></div></div>
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="menu_infantil.webp" alt="Menú Infantil"></div><div class="include-content"><h4><i class="fas fa-child"></i> Menú Infantil</h4><p>Tiritas de milanesa, hamburguesa o nuggets de pollo con espagueti, papas fritas y golosina sorpresa.</p></div></div>
-            </div>
-
             <!-- ══ INVERSIÓN TOTAL BASE ══ -->
             <div class="pricing-section reveal" id="inversionBase">
                 <h3>Su Inversión</h3>
@@ -731,14 +827,6 @@
                     <div class="price-breakdown-row" style="border-top:1px solid rgba(255,255,255,.12); margin-top:8px; padding-top:8px; font-weight:700;"><span>Extras seleccionados</span><span id="totalExtrasTexto">$0.00</span></div>
                 </div>
                 <div class="price-note">* Precios netos, sujetos a cambio sin previo aviso. No incluyen IVA. Se requiere depósito para reservar la fecha.</div>
-            </div>
-
-            <h3 class="section-title reveal reveal-left"><i class="fas fa-magic"></i> Detalles Visuales del Servicio</h3>
-            <div class="includes-grid">
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="cuberteria_fina.webp" alt="Cubertería"></div><div class="include-content"><h4><i class="fas fa-utensils"></i> Vajilla &amp; Cubertería Fina</h4><p>Montaje de mesa sofisticado con loza, cubiertos y cristalería de brillo impecable por invitado.</p></div></div>
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="cristaleria.webp" alt="Cristalería"></div><div class="include-content"><h4><i class="fas fa-glass-martini-alt"></i> Cristalería y Servicio de Barra</h4><p>Servicio ágil de preparación de bebidas en barra limpia y elegante.</p></div></div>
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="templete_back_luces_vintage.webp" alt="Mesa principal con luces vintage"></div><div class="include-content"><h4><i class="fas fa-star"></i> Mesa Principal Iluminada</h4><p>Templete de madera con back de luces vintage y telas, marco perfecto para la quinceañera.</p></div></div>
-                <div class="include-item reveal"><div class="include-img-container"><img class="include-img" src="meseros.webp" alt="Personal de servicio"></div><div class="include-content"><h4><i class="fas fa-concierge-bell"></i> Personal de Servicio Profesional</h4><p>Equipo coordinado de meseros, barra, cocina y coordinación general.</p></div></div>
             </div>
 
             <!-- ══ COMPLEMENTOS OFICIALES ══ -->
@@ -783,10 +871,22 @@
             <div class="publicidad-section">
                 <h3 class="section-title reveal reveal-left"><i class="fas fa-bullhorn"></i> Descubre Más de Primavera Events Group</h3>
                 <div class="publicidad-grid">
-                    <a href="https://primaveraeventsgroup.com/bodas/" target="_blank" class="publicidad-card"><img src="pub_boda_ensueno.webp" alt="Bodas de Ensueño"></a>
-                    <a href="https://primaveraeventsgroup.com/quinceaneras-primavera/" target="_blank" class="publicidad-card"><img src="pub_xv_anos.webp" alt="XV Años"></a>
-                    <a href="https://primaveraeventsgroup.com/graduaciones-primavera/" target="_blank" class="publicidad-card"><img src="pub_graduados.webp" alt="Graduaciones"></a>
-                    <a href="https://primaveraeventsgroup.com/richard-hernandez/" target="_blank" class="publicidad-card"><img src="pub_jessy_richard.webp" alt="Wedding &amp; Event Planning con Jessy y Richard"></a>
+                    <a href="https://primaveraeventsgroup.com/bodas/" target="_blank" class="publicidad-card">
+                        <img src="pub_boda_ensueno.webp" alt="Bodas de Ensueño">
+                        <span class="publicidad-label">Bodas de Ensueño</span>
+                    </a>
+                    <a href="https://primaveraeventsgroup.com/quinceaneras-primavera/" target="_blank" class="publicidad-card">
+                        <img src="pub_xv_anos.webp" alt="XV Años">
+                        <span class="publicidad-label">Fiestas de XV Años</span>
+                    </a>
+                    <a href="https://primaveraeventsgroup.com/graduaciones-primavera/" target="_blank" class="publicidad-card">
+                        <img src="pub_graduados.webp" alt="Graduaciones">
+                        <span class="publicidad-label">Graduaciones Inolvidables</span>
+                    </a>
+                    <a href="https://primaveraeventsgroup.com/richard-hernandez/" target="_blank" class="publicidad-card">
+                        <img src="pub_jessy_richard.webp" alt="Wedding &amp; Event Planning con Jessy y Richard">
+                        <span class="publicidad-label">Event Planners Oficiales</span>
+                    </a>
                 </div>
             </div>
 
@@ -827,7 +927,7 @@
 
             <!-- ══ FIRMA ══ -->
             <div class="signature-section">
-                <video id="videoFirma" autoplay muted loop playsinline preload="auto">
+                <video id="videoFirma" autoplay muted loop playsinline webkit-playsinline preload="auto">
                     <source src="firma.mp4" type="video/mp4">
                 </video>
             </div>
@@ -835,11 +935,11 @@
             <div class="notes-section">
                 <h3><i class="fas fa-file-contract"></i> Condiciones de Contratación y Notas Importantes</h3>
                 <ul>
-                    <li><strong>Anticipo:</strong> 50% para bloquear la fecha en agenda. El 50% restante se liquida a más tardar el día previo al evento (o 30 días antes en contratos de banquete grandes — se confirma en contrato).</li>
+                    <li><strong>Anticipo:</strong> 50% para bloquear la fecha en agenda. El 50% restante se liquida a más tardar el día previo al evento.</li>
                     <li><strong>Depósito:</strong> se requiere depósito para reservar la fecha.</li>
                     <li><strong>Precios sujetos a cambio:</strong> los precios de este paquete están sujetos a cambios sin previo aviso hasta la firma del contrato.</li>
                     <li><strong>Cancelación sin motivo por el cliente:</strong> se reintegra el 10% de lo acumulado a la fecha, a las 48 horas de solicitado.</li>
-                    <li><strong>Penalización por cancelación (contratos grandes):</strong> 50% del valor total del contrato.</li>
+                    <li><strong>Penalización por cancelación:</strong> 50% del valor total del contrato.</li>
                     <li><strong>Neto sin impuestos:</strong> precios netos, el 16% de IVA aplica solo con factura fiscal oficial.</li>
                     <li><strong>Validez:</strong> esta cotización mantiene sus costos garantizados por 15 días a partir de su emisión.</li>
                 </ul>
@@ -896,6 +996,15 @@
         </div>
     </footer>
 
+    <!-- ══ Visor de las hojas del minuto a minuto ══ -->
+    <div class="visor" id="visor">
+        <button class="visor-cerrar" id="visorCerrar" title="Cerrar visor">&times;</button>
+        <button class="visor-nav izq" id="visorIzq" title="Anterior"><i class="fas fa-chevron-left"></i></button>
+        <img id="visorImg" src="" alt="Ficha técnica del evento en alta resolución">
+        <button class="visor-nav der" id="visorDer" title="Siguiente"><i class="fas fa-chevron-right"></i></button>
+        <div class="visor-contador" id="visorContador"></div>
+    </div>
+
     <!-- ══ Floating Actions ══ -->
     <div class="floating-actions-container">
         <div class="fab-group" id="socialGroup">
@@ -919,11 +1028,12 @@
 
     <script>
     /* ═══════════════════════════════════════════════════════════════
-       Cotización estática de Primavera Events Group para Ana Salgado.
+       Cotización de Primavera Events Group para Ana Salgado.
        Paquete Esencia Floral · Jardín La Flor · 200 invitados.
        ═══════════════════════════════════════════════════════════════ */
 
-    const TOTAL_BASE = 179800; // 200 px x $899.00 (tarifa 200-300 personas)
+    const TOTAL_BASE = 179800; // 200 px x $899.00
+    const INVITADOS = 200;
 
     const EXTRAS = [
         { categoria: "Personal Extra", items: [
@@ -933,8 +1043,7 @@
             { nombre: "Barman adicional", precio: 500 },
             { nombre: "Hostess adicional", precio: 500 },
         ]},
-        { categoria: "Entretenimiento", items: [
-            { nombre: "DJ adicional (7 hrs, con pantalla)", precio: 8000 },
+        { categoria: "Entretenimiento & Experiencias", items: [
             { nombre: "Robot LED (1 hr)", precio: 2500 },
             { nombre: "Cabina 360° (1 hr)", precio: 2500 },
             { nombre: "Cabina Inflable de Fotos (2 hrs)", precio: 3500 },
@@ -942,6 +1051,7 @@
             { nombre: "Saxofonista (1 hr)", precio: 2500 },
             { nombre: "Mariachi (1 hr)", precio: 4500 },
             { nombre: "Banda (1 hr)", precio: 7000 },
+            { nombre: "DJ adicional (7 hrs, con pantalla)", precio: 8000 },
         ]},
         { categoria: "Fotografía y Video", items: [
             { nombre: "Paquete Memoria Clásica (Fotografía)", precio: 9350 },
@@ -965,6 +1075,7 @@
 
     function renderCalculador() {
         const grid = document.getElementById('calcGrid');
+        if (!grid) return;
         let html = '';
         let idCounter = 0;
         EXTRAS.forEach(cat => {
@@ -983,75 +1094,95 @@
         grid.innerHTML = html;
     }
 
-    const INVITADOS = 200;
-
     function actualizarTotal() {
         const seleccion = Object.values(extrasSeleccionados);
         const extras = seleccion.reduce((s, e) => s + e.precio, 0);
         const totalFinal = TOTAL_BASE + extras;
 
-        document.getElementById('totalBaseDisplay').innerHTML = moneyFmt(totalFinal / INVITADOS) + '<sup>MXN</sup>';
+        const tbDisplay = document.getElementById('totalBaseDisplay');
+        if (tbDisplay) tbDisplay.innerHTML = moneyFmt(totalFinal / INVITADOS) + '<sup>MXN</sup>';
         const teChico = document.getElementById('totalEventoChico');
         if (teChico) teChico.textContent = moneyFmt(totalFinal) + ' MXN';
-        document.getElementById('totalBaseTexto').textContent = moneyFmt(TOTAL_BASE);
-        document.getElementById('totalExtrasTexto').textContent = moneyFmt(extras);
-        document.getElementById('listaExtras').innerHTML = seleccion
-            .map(e => `<li class="price-breakdown-row"><span>+ ${e.nombre}</span><span>${moneyFmt(e.precio)}</span></li>`)
-            .join('');
-        document.getElementById('desgloseExtras').style.display = seleccion.length ? 'block' : 'none';
+        const tbTexto = document.getElementById('totalBaseTexto');
+        if (tbTexto) tbTexto.textContent = moneyFmt(TOTAL_BASE);
+        const teTexto = document.getElementById('totalExtrasTexto');
+        if (teTexto) teTexto.textContent = moneyFmt(extras);
+        const lExtras = document.getElementById('listaExtras');
+        if (lExtras) {
+            lExtras.innerHTML = seleccion
+                .map(e => `<li class="price-breakdown-row"><span>+ ${e.nombre}</span><span>${moneyFmt(e.precio)}</span></li>`)
+                .join('');
+        }
+        const dExtras = document.getElementById('desgloseExtras');
+        if (dExtras) dExtras.style.display = seleccion.length ? 'block' : 'none';
 
-        // Placa de total del propio cotizador (la que el cliente tiene fija a la vista)
         const ctbTotal = document.getElementById('ctbTotal');
         if (ctbTotal) {
             ctbTotal.textContent = moneyFmt(totalFinal);
             const pp = document.getElementById('ctbPorPersona');
             if (pp) pp.textContent = moneyFmt(totalFinal / INVITADOS);
-            document.getElementById('ctbBase').textContent = moneyFmt(TOTAL_BASE);
-            document.getElementById('ctbExtras').innerHTML = seleccion
-                .map(e => `<li><span>+ ${e.nombre}</span><span>${moneyFmt(e.precio)}</span></li>`)
-                .join('');
-            document.getElementById('ctbVacio').style.display = seleccion.length ? 'none' : 'block';
+            const ctbBase = document.getElementById('ctbBase');
+            if (ctbBase) ctbBase.textContent = moneyFmt(TOTAL_BASE);
+            const ctbExtras = document.getElementById('ctbExtras');
+            if (ctbExtras) {
+                ctbExtras.innerHTML = seleccion
+                    .map(e => `<li><span>+ ${e.nombre}</span><span>${moneyFmt(e.precio)}</span></li>`)
+                    .join('');
+            }
+            const ctbVacio = document.getElementById('ctbVacio');
+            if (ctbVacio) ctbVacio.style.display = seleccion.length ? 'none' : 'block';
         }
     }
 
     window.__toggleExtra = (id, nombre, precio, checked) => {
         if (checked) extrasSeleccionados[id] = { nombre, precio };
         else delete extrasSeleccionados[id];
-        document.getElementById(`item-${id}`).classList.toggle('checked', checked);
+        const el = document.getElementById(`item-${id}`);
+        if (el) el.classList.toggle('checked', checked);
         actualizarTotal();
     };
 
-    // Preloader / audio
+    // Preloader / Audio
     const bgAudio = document.getElementById('bgAudio');
     const btnEnter = document.getElementById('btnEnter');
     const preloader = document.getElementById('preloader');
     const audioToggle = document.getElementById('audioToggle');
     let audioPlaying = false;
 
-    btnEnter.addEventListener('click', () => {
-        preloader.classList.add('fade-out');
-        bgAudio.play().then(() => { audioPlaying = true; updateAudioIcon(); }).catch(() => {});
-    });
-    audioToggle.addEventListener('click', () => {
-        if (audioPlaying) { bgAudio.pause(); audioPlaying = false; }
-        else { bgAudio.play().then(() => { audioPlaying = true; }); }
-        updateAudioIcon();
-    });
+    if (btnEnter) {
+        btnEnter.addEventListener('click', () => {
+            if (preloader) preloader.classList.add('fade-out');
+            if (bgAudio) {
+                bgAudio.play().then(() => { audioPlaying = true; updateAudioIcon(); }).catch(() => {});
+            }
+        });
+    }
+    if (audioToggle) {
+        audioToggle.addEventListener('click', () => {
+            if (!bgAudio) return;
+            if (audioPlaying) { bgAudio.pause(); audioPlaying = false; }
+            else { bgAudio.play().then(() => { audioPlaying = true; }); }
+            updateAudioIcon();
+        });
+    }
     function updateAudioIcon() {
+        if (!audioToggle) return;
         const icon = audioToggle.querySelector('i');
-        icon.className = audioPlaying ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+        if (icon) icon.className = audioPlaying ? 'fas fa-volume-up' : 'fas fa-volume-mute';
         audioToggle.style.color = audioPlaying ? '#25D366' : 'var(--primary-pink)';
     }
 
-    // Floating actions: toggle de grupos + compartir nativo
+    // Floating actions
     const fabGroups = document.querySelectorAll('.fab-group');
     fabGroups.forEach(g => {
         const btn = g.querySelector('.fab-main');
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            fabGroups.forEach(o => { if (o !== g) o.classList.remove('active'); });
-            g.classList.toggle('active');
-        });
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                fabGroups.forEach(o => { if (o !== g) o.classList.remove('active'); });
+                g.classList.toggle('active');
+            });
+        }
     });
     document.addEventListener('click', () => fabGroups.forEach(g => g.classList.remove('active')));
 
@@ -1061,32 +1192,178 @@
         text: 'Hola, te comparto mi propuesta de Fiesta de XV Años con Primavera Events Group.',
         url: window.location.href
     };
-    btnShare.addEventListener('click', async () => {
-        if (navigator.share) {
-            try { await navigator.share(shareData); } catch (err) { if (err.name !== 'AbortError') console.error(err); }
-        } else {
-            try {
-                await navigator.clipboard.writeText(window.location.href);
-                alert('Enlace copiado al portapapeles. Ya puedes pegarlo en WhatsApp o cualquier app.');
-            } catch (err) {
-                alert('Por favor, copia el enlace de la barra de direcciones de tu navegador.');
+    if (btnShare) {
+        btnShare.addEventListener('click', async () => {
+            if (navigator.share) {
+                try { await navigator.share(shareData); } catch (err) { if (err.name !== 'AbortError') console.error(err); }
+            } else {
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    alert('Enlace copiado al portapapeles. Ya puedes pegarlo en WhatsApp o cualquier app.');
+                } catch (err) {
+                    alert('Por favor, copia el enlace de la barra de direcciones de tu navegador.');
+                }
             }
-        }
-    });
+        });
+    }
 
     // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => revealObserver.observe(el));
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => revealObserver.observe(el));
+    } else {
+        revealEls.forEach(el => el.classList.add('active'));
+    }
 
-    // ══ Controller de Pinning de la placa de totales (Desktop + Móvil) ══
+    // ══ Carrusel del Minuto a Minuto (Ficha Técnica) ══
+    (function(){
+        var track = document.getElementById('slidesTrack');
+        if (!track) return;
+        var slides = track.querySelectorAll('.slide');
+        var dots = document.getElementById('slidesDots');
+        if (dots) {
+            slides.forEach(function(_, i){
+                var d = document.createElement('span');
+                if (i === 0) d.className = 'on';
+                d.addEventListener('click', function(){ slides[i].scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'}); });
+                dots.appendChild(d);
+            });
+        }
+        function paso(dir){
+            var w = slides[0].getBoundingClientRect().width + 16;
+            track.scrollBy({ left: dir * w, behavior:'smooth' });
+        }
+        var btnPrev = document.getElementById('slidePrev');
+        var btnNext = document.getElementById('slideNext');
+        if (btnPrev) btnPrev.addEventListener('click', function(){ paso(-1); });
+        if (btnNext) btnNext.addEventListener('click', function(){ paso(1); });
+        track.addEventListener('scroll', function(){
+            var w = slides[0].getBoundingClientRect().width + 16;
+            var i = Math.round(track.scrollLeft / w);
+            if (dots) {
+                dots.querySelectorAll('span').forEach(function(d, k){ d.classList.toggle('on', k === i); });
+            }
+        }, { passive:true });
+
+        var timer = null, manual = false;
+        function arranca(){
+            if (timer || manual) return;
+            timer = setInterval(function(){
+                var w = slides[0].getBoundingClientRect().width + 16;
+                var fin = track.scrollWidth - track.clientWidth - 8;
+                if (track.scrollLeft >= fin) track.scrollTo({ left:0, behavior:'smooth' });
+                else track.scrollBy({ left:w, behavior:'smooth' });
+            }, 3200);
+        }
+        function detiene(){ clearInterval(timer); timer = null; }
+        ['pointerdown','wheel','touchstart'].forEach(function(ev){
+            track.addEventListener(ev, function(){ manual = true; detiene(); }, { passive:true });
+        });
+        [btnPrev, btnNext].forEach(function(b){
+            if (b) b.addEventListener('click', function(){ manual = true; detiene(); });
+        });
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function(entries){
+                entries.forEach(function(e){ e.isIntersecting ? arranca() : detiene(); });
+            }, { threshold: 0.25 }).observe(track);
+        } else { arranca(); }
+    })();
+
+    // ══ Fullscreen Croquis Video ══
+    (function(){
+        var b = document.getElementById('btnFullCroquis'), v = document.getElementById('videoCroquis');
+        if (!b || !v) return;
+        b.addEventListener('click', function(){
+            if (v.requestFullscreen) v.requestFullscreen();
+            else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
+            else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen();
+            v.play().catch(function(){});
+        });
+    })();
+
+    // ══ Visor Modal de las Hojas del Minuto a Minuto ══
+    (function(){
+        var visor = document.getElementById('visor');
+        if (!visor) return;
+        var img = document.getElementById('visorImg'), cont = document.getElementById('visorContador');
+        var fuentes = Array.prototype.map.call(document.querySelectorAll('.slide img'), function(i){ return i.getAttribute('src'); });
+        var pos = 0;
+        function pinta(){ img.src = fuentes[pos]; cont.textContent = 'Hoja ' + (pos+1) + ' de ' + fuentes.length; }
+        function abre(i){ pos = i; pinta(); visor.classList.add('abierto'); document.body.style.overflow = 'hidden'; }
+        function cierra(){ visor.classList.remove('abierto'); document.body.style.overflow = ''; }
+        document.querySelectorAll('.slide').forEach(function(s, i){ s.addEventListener('click', function(){ abre(i); }); });
+        var vCerrar = document.getElementById('visorCerrar');
+        if (vCerrar) vCerrar.addEventListener('click', cierra);
+        visor.addEventListener('click', function(e){ if (e.target === visor) cierra(); });
+        var vIzq = document.getElementById('visorIzq'), vDer = document.getElementById('visorDer');
+        if (vIzq) vIzq.addEventListener('click', function(e){ e.stopPropagation(); pos = (pos-1+fuentes.length)%fuentes.length; pinta(); });
+        if (vDer) vDer.addEventListener('click', function(e){ e.stopPropagation(); pos = (pos+1)%fuentes.length; pinta(); });
+        document.addEventListener('keydown', function(e){
+            if (!visor.classList.contains('abierto')) return;
+            if (e.key === 'Escape') cierra();
+            if (e.key === 'ArrowLeft')  { pos = (pos-1+fuentes.length)%fuentes.length; pinta(); }
+            if (e.key === 'ArrowRight') { pos = (pos+1)%fuentes.length; pinta(); }
+        });
+    })();
+
+    // ══ Reproducción Continuada e Infinita de Videos (Loop Garantizado) ══
+    (function(){
+        var videoElems = document.querySelectorAll('video');
+        videoElems.forEach(function(v){
+            v.loop = true;
+            v.muted = true;
+            v.defaultMuted = true;
+            v.setAttribute('loop', '');
+            v.setAttribute('muted', '');
+            v.setAttribute('playsinline', '');
+            v.setAttribute('webkit-playsinline', '');
+
+            v.addEventListener('ended', function(){
+                v.currentTime = 0;
+                v.play().catch(function(){});
+            });
+        });
+
+        var unlockAll = function() {
+            videoElems.forEach(function(v){
+                if (v.paused) { v.play().catch(function(){}); }
+            });
+            window.removeEventListener('touchstart', unlockAll);
+            window.removeEventListener('click', unlockAll);
+            window.removeEventListener('scroll', unlockAll);
+        };
+        window.addEventListener('touchstart', unlockAll, { passive: true, once: true });
+        window.addEventListener('click', unlockAll, { passive: true, once: true });
+        window.addEventListener('scroll', unlockAll, { passive: true, once: true });
+
+        if ('IntersectionObserver' in window) {
+            var vObs = new IntersectionObserver(function(entries){
+                entries.forEach(function(e){
+                    var vid = e.target;
+                    if (e.isIntersecting) {
+                        if (vid.ended) vid.currentTime = 0;
+                        vid.play().catch(function(){});
+                    } else if (vid.id !== 'preloaderVideo') {
+                        vid.pause();
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            videoElems.forEach(function(v){
+                if (v.id !== 'preloaderVideo') vObs.observe(v);
+            });
+        }
+    })();
+
+    // ══ Controller de Pinning para la Placa de Total de Cotizador ══
     (function(){
         var calcSection = document.querySelector('.calc-section');
         var calcBox = document.getElementById('calcTotalBox');
@@ -1103,7 +1380,6 @@
             var isMobile = window.innerWidth <= 768;
             var topOffset = isMobile ? 8 : 10;
 
-            // Mantener fija cuando la parte superior de la sección llegue al tope de la ventana
             if (secRect.top <= topOffset && secRect.bottom >= boxHeight + 40) {
                 if (!calcBox.classList.contains('is-pinned')) {
                     placeholder.style.height = boxHeight + 'px';
